@@ -1,0 +1,19 @@
+<svg width="1200" height="640" viewBox="0 0 1200 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g2" x1="50" y1="40" x2="1090" y2="620" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5A2F9B"/>
+      <stop offset="0.6" stop-color="#1E4FB6"/>
+      <stop offset="1" stop-color="#177F83"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="640" rx="26" fill="url(#g2)"/>
+  <rect x="110" y="110" width="980" height="420" rx="26" fill="#F8FAFF" fill-opacity="0.95"/>
+  <rect x="165" y="170" width="170" height="112" rx="14" fill="#E5EEFF"/>
+  <rect x="355" y="170" width="170" height="112" rx="14" fill="#D8F2ED"/>
+  <rect x="545" y="170" width="170" height="112" rx="14" fill="#E5EEFF"/>
+  <rect x="735" y="170" width="170" height="112" rx="14" fill="#D8F2ED"/>
+  <rect x="165" y="320" width="420" height="160" rx="16" fill="#EEF3FF"/>
+  <rect x="615" y="320" width="290" height="160" rx="16" fill="#E5EEFF"/>
+  <rect x="930" y="320" width="110" height="160" rx="16" fill="#D8F2ED"/>
+  <path d="M205 425C250 370 290 452 333 402C368 361 403 399 450 352C500 303 529 356 568 320" stroke="#2B5AC1" stroke-width="9" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,35 @@
+---
+interface Props {
+  titleEs: string;
+  titleEn: string;
+  subtitleEs?: string;
+  subtitleEn?: string;
+  className?: string;
+}
+
+const {
+  titleEs,
+  titleEn,
+  subtitleEs,
+  subtitleEn,
+  className = ''
+} = Astro.props;
+---
+<section data-motion-reveal class:list={["py-12 sm:py-16", className]}>
+  <div class="container-shell">
+    <div class="mb-8 max-w-3xl">
+      <div class="mb-5 h-1 w-14 rounded-full bg-gradient-to-r from-[color:var(--color-accent)] to-[color:var(--color-highlight)]"></div>
+      <h2 class="display-title text-balance text-4xl font-semibold text-[color:var(--color-text)] sm:text-5xl">
+        <span class="lang-es">{titleEs}</span>
+        <span class="lang-en">{titleEn}</span>
+      </h2>
+      {(subtitleEs || subtitleEn) && (
+        <p class="mt-3 text-lg text-[color:var(--color-text-soft)]">
+          <span class="lang-es">{subtitleEs}</span>
+          <span class="lang-en">{subtitleEn}</span>
+        </p>
+      )}
+    </div>
+    <slot />
+  </div>
+</section>

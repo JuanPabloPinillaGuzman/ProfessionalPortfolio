@@ -1,0 +1,29 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Section from '../ui/layout/Section.astro';
+import ProjectCard from '../ui/cards/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+import { siteConfig } from '../config/site';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => b.data.year - a.data.year
+);
+---
+<MainLayout
+  title="Projects"
+  description={siteConfig.description}
+  canonicalPath="/projects"
+>
+  <Section
+    titleEs="Proyectos"
+    titleEn="Projects"
+    subtitleEs="Vista resumida de experiencia aplicada en proyectos de software."
+    subtitleEn="A concise view of project experience with practical technical decisions."
+    className=""
+  >
+    <div class="section-divider mb-8"></div>
+    <div data-motion-stagger class="grid gap-6 md:grid-cols-2">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </Section>
+</MainLayout>

@@ -1,0 +1,155 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Section from '../ui/layout/Section.astro';
+import SkillBadge from '../ui/cards/SkillBadge.astro';
+import ProjectCard from '../ui/cards/ProjectCard.astro';
+import {
+  siteConfig,
+  skills,
+  professionalSummary,
+  impactHighlights,
+  professionalSummaryEn,
+  impactHighlightsEn
+} from '../config/site';
+import { getCollection } from 'astro:content';
+
+const featuredProjects = (await getCollection('projects'))
+  .filter((project) => project.data.featured)
+  .sort((a, b) => b.data.year - a.data.year)
+  .slice(0, 2);
+---
+
+<MainLayout
+  title="Software Developer Portfolio"
+  description={siteConfig.description}
+  canonicalPath="/"
+>
+  <section class="pt-10 sm:pt-16">
+    <div class="container-shell grid items-start gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+      <div data-motion-reveal class="panel cut-corner relative overflow-hidden rounded-3xl p-7 sm:p-10">
+        <div class="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-[color:var(--color-accent)]/16 blur-2xl"></div>
+        <div class="absolute bottom-5 right-7 h-2 w-20 rounded-full bg-[color:var(--color-highlight)]/50"></div>
+        <p class="eyebrow">
+          <span class="lang-es">{siteConfig.roleEs}</span>
+          <span class="lang-en">{siteConfig.roleEn}</span>
+        </p>
+        <h1 data-motion="hero-title" class="display-title text-balance mt-4 text-5xl font-semibold leading-[1.04] text-[color:var(--color-text)] sm:text-7xl">
+          {siteConfig.name}
+        </h1>
+        <p data-motion="hero-copy" class="mt-4 max-w-2xl text-lg text-[color:var(--color-text-soft)]">
+          <span class="lang-es">{professionalSummary}</span>
+          <span class="lang-en">{professionalSummaryEn}</span>
+        </p>
+        <p class="mt-3 text-sm font-semibold tracking-wide text-[color:var(--color-text-soft)]/90">
+          <span class="lang-es">{siteConfig.location}</span>
+          <span class="lang-en">{siteConfig.locationEn}</span>
+        </p>
+
+        <div data-motion-stagger class="mt-8 flex flex-wrap gap-3">
+          <a data-motion-hover href="/projects" class="rounded-full bg-[color:var(--color-accent)] px-6 py-3 font-semibold text-white transition hover:bg-[color:var(--color-accent-soft)]">
+            <span class="lang-es">Ver proyectos</span>
+            <span class="lang-en">View projects</span>
+          </a>
+          <a data-motion-hover href="/contact" class="rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-6 py-3 font-semibold text-[color:var(--color-text)] transition hover:border-[color:var(--color-accent-soft)] hover:text-[color:var(--color-accent)]">
+            <span class="lang-es">Contactame</span>
+            <span class="lang-en">Contact me</span>
+          </a>
+        </div>
+      </div>
+
+      <aside data-motion-stagger class="grid gap-4">
+        <article data-motion-reveal class="panel relative overflow-hidden rounded-3xl p-6">
+          <div data-motion-float class="absolute -right-6 -top-6 h-16 w-16 rounded-full border border-orange-200 bg-orange-100/80"></div>
+          <p class="text-xs font-bold uppercase tracking-[0.12em] text-[color:var(--color-accent)]">
+            <span class="lang-es">Enfoque</span>
+            <span class="lang-en">Positioning</span>
+          </p>
+          <h2 class="mt-2 text-2xl font-bold text-[color:var(--color-text)]">
+            <span class="lang-es">Ingenieria orientada a producto</span>
+            <span class="lang-en">Product-minded engineering</span>
+          </h2>
+          <p class="mt-3 text-[color:var(--color-text-soft)]">
+            <span class="lang-es">Construyo software funcional, escalable y mantenible para necesidades reales.</span>
+            <span class="lang-en">I build functional, scalable, and maintainable software for real-world needs.</span>
+          </p>
+        </article>
+        <article data-motion-reveal class="panel rounded-3xl bg-[#2f241a] p-6 text-amber-50">
+          <p class="text-xs font-bold uppercase tracking-[0.12em] text-orange-200">
+            <span class="lang-es">Propuesta central</span>
+            <span class="lang-en">Core promise</span>
+          </p>
+          <p class="mt-3 text-balance text-xl font-semibold leading-snug">
+            <span class="lang-es">Arquitectura clara, entrega organizada y enfoque real en el usuario.</span>
+            <span class="lang-en">Clear architecture, organized delivery, and real user focus.</span>
+          </p>
+        </article>
+        <figure data-motion-reveal class="panel relative overflow-hidden rounded-3xl p-3">
+          <img
+            src="/visuals/hero-lab.svg"
+            alt="Creative scene representing software architecture and product flow."
+            class="h-48 w-full rounded-2xl object-cover sm:h-56"
+            loading="eager"
+          />
+          <figcaption class="px-2 pb-2 pt-3 text-sm font-semibold text-[color:var(--color-text-soft)]">
+            <span class="lang-es">Pensamiento sistemico para entregar soluciones reales.</span>
+            <span class="lang-en">Systems thinking for practical product delivery.</span>
+          </figcaption>
+          <span data-motion-float class="absolute bottom-5 right-5 rounded-full border border-teal-300 bg-teal-50 px-3 py-1 text-xs font-bold text-teal-700">
+            Build. Refine. Ship.
+          </span>
+        </figure>
+      </aside>
+    </div>
+  </section>
+
+  <Section
+    titleEs="Fortalezas tecnicas"
+    titleEn="Core technical strengths"
+    subtitleEs="Stack y practicas de ingenieria para construir soluciones confiables."
+    subtitleEn="Focused stack and engineering practices used to build reliable software solutions."
+    className=""
+  >
+    <ul data-motion-stagger class="flex flex-wrap gap-3">
+      {skills.map((skill) => <SkillBadge value={skill} />)}
+    </ul>
+  </Section>
+
+  <Section
+    titleEs="Impacto profesional"
+    titleEn="Professional impact"
+    subtitleEs="Como aporto valor en proyectos y equipos de desarrollo."
+    subtitleEn="How I contribute to product and engineering outcomes."
+    className=""
+  >
+    <ul data-motion-stagger class="grid gap-4 md:grid-cols-3">
+      {impactHighlights.map((item, index) => (
+        <li data-motion-reveal data-motion-hover class:list={[
+          'panel panel-hover rounded-3xl p-5 text-[color:var(--color-text-soft)]',
+          index === 1 && 'md:-translate-y-2'
+        ]}>
+          <span class="lang-es">{item}</span>
+          <span class="lang-en">{impactHighlightsEn[index]}</span>
+        </li>
+      ))}
+    </ul>
+  </Section>
+
+  <Section
+    titleEs="Proyectos destacados"
+    titleEn="Featured projects"
+    subtitleEs="Experiencia en proyectos con enfoque practico y resultados funcionales."
+    subtitleEn="Selected work with practical outcomes and production-oriented decisions."
+    className=""
+  >
+    <div data-motion-stagger class="grid gap-6 md:grid-cols-2">
+      {featuredProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+    <div class="mt-8">
+      <a data-motion-hover href="/projects" class="inline-flex items-center gap-2 font-semibold text-[color:var(--color-accent)] underline underline-offset-4 hover:text-[color:var(--color-accent-soft)]">
+        <span class="lang-es">Explorar todos los proyectos</span>
+        <span class="lang-en">Explore all projects</span>
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </Section>
+</MainLayout>

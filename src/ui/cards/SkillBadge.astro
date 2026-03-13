@@ -1,0 +1,10 @@
+---
+interface Props {
+  value: string;
+}
+
+const { value } = Astro.props;
+---
+<li data-motion-hover data-motion-reveal class="panel panel-hover rounded-full bg-[color:var(--color-surface)] px-4 py-2 text-sm font-semibold text-[color:var(--color-text-soft)]">
+  {value}
+</li>

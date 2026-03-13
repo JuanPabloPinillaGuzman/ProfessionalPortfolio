@@ -1,0 +1,70 @@
+---
+import '../styles/global.css';
+import Header from '../ui/navigation/Header.astro';
+import Footer from '../ui/layout/Footer.astro';
+import MotionEffects from '../ui/motion/MotionEffects.astro';
+import { siteConfig } from '../config/site';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath?: string;
+  ogType?: 'website' | 'article';
+}
+
+const {
+  title,
+  description,
+  canonicalPath = '/',
+  ogType = 'website'
+} = Astro.props;
+
+const pageTitle = `${title} | ${siteConfig.shortName}`;
+const canonicalUrl = new URL(canonicalPath, Astro.site);
+---
+<!doctype html>
+<html lang="es" data-lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={siteConfig.name} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+
+    <title>{pageTitle}</title>
+  </head>
+  <body class="text-[color:var(--color-text)] antialiased">
+    <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+      <div data-motion-float class="absolute -left-20 top-8 h-72 w-72 rounded-full bg-orange-300/20 blur-3xl"></div>
+      <div data-motion-float class="absolute right-0 top-56 h-80 w-80 rounded-full bg-teal-300/20 blur-3xl"></div>
+      <div data-motion-float class="absolute bottom-0 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-amber-200/20 blur-3xl"></div>
+      <div data-motion-float class="absolute left-[8%] top-[28%] h-28 w-28 rounded-3xl border border-orange-200/60 bg-white/20 backdrop-blur-md"></div>
+      <div data-motion-float class="absolute right-[12%] top-[18%] h-20 w-20 rotate-12 rounded-xl border border-teal-200/60 bg-white/20 backdrop-blur-md"></div>
+      <svg class="absolute bottom-[14%] left-[15%] h-24 w-24 text-orange-200/70" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <path d="M15 50C15 30.67 30.67 15 50 15C69.33 15 85 30.67 85 50C85 69.33 69.33 85 50 85C30.67 85 15 69.33 15 50Z" stroke="currentColor" stroke-width="2"/>
+        <circle cx="50" cy="15" r="4" fill="currentColor"/>
+      </svg>
+    </div>
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:shadow-lg">
+      Skip to content
+    </a>
+    <Header />
+    <main id="main-content" class="pb-8">
+      <slot />
+    </main>
+    <Footer />
+    <MotionEffects />
+  </body>
+</html>

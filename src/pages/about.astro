@@ -1,0 +1,88 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Section from '../ui/layout/Section.astro';
+import {
+  professionalSummary,
+  impactHighlights,
+  siteConfig,
+  englishLevel,
+  applicationHighlights,
+  professionalSummaryEn,
+  impactHighlightsEn,
+  applicationHighlightsEn,
+  englishLevelEn
+} from '../config/site';
+---
+<MainLayout
+  title="About"
+  description={siteConfig.description}
+  canonicalPath="/about"
+>
+  <Section
+    titleEs="Perfil profesional"
+    titleEn="Professional profile"
+    subtitleEs="Experiencia aplicada en desarrollo web, backend y bases de datos."
+    subtitleEn="Practical experience in web development, backend systems, and databases."
+    className=""
+  >
+    <p class="max-w-3xl text-lg text-[color:var(--color-text-soft)]">
+      <span class="lang-es">{professionalSummary}</span>
+      <span class="lang-en">{professionalSummaryEn}</span>
+    </p>
+
+    <div data-motion-stagger class="mt-8 grid gap-5 md:grid-cols-3">
+      <article data-motion-reveal data-motion-hover class="panel panel-hover rounded-3xl p-6">
+        <h3 class="text-lg font-bold text-[color:var(--color-text)]">
+          <span class="lang-es">Rol</span>
+          <span class="lang-en">Role</span>
+        </h3>
+        <p class="mt-2 text-[color:var(--color-text-soft)]">
+          <span class="lang-es">{siteConfig.roleEs}</span>
+          <span class="lang-en">{siteConfig.roleEn}</span>
+        </p>
+      </article>
+      <article data-motion-reveal data-motion-hover class="panel panel-hover rounded-3xl p-6 md:-translate-y-2">
+        <h3 class="text-lg font-bold text-[color:var(--color-text)]">
+          <span class="lang-es">Nivel de ingles</span>
+          <span class="lang-en">English level</span>
+        </h3>
+        <p class="mt-2 text-[color:var(--color-text-soft)]">
+          <span class="lang-es">{englishLevel}</span>
+          <span class="lang-en">{englishLevelEn}</span>
+        </p>
+      </article>
+      <article data-motion-reveal data-motion-hover class="panel panel-hover rounded-3xl p-6">
+        <h3 class="text-lg font-bold text-[color:var(--color-text)]">
+          <span class="lang-es">Ubicacion</span>
+          <span class="lang-en">Location</span>
+        </h3>
+        <p class="mt-2 text-[color:var(--color-text-soft)]">
+          <span class="lang-es">{siteConfig.location}</span>
+          <span class="lang-en">{siteConfig.locationEn}</span>
+        </p>
+      </article>
+    </div>
+  </Section>
+
+  <Section titleEs="Fortalezas profesionales" titleEn="Professional strengths" className="">
+    <ul data-motion-stagger class="grid gap-4 md:grid-cols-3">
+      {impactHighlights.map((item, index) => (
+        <li data-motion-reveal data-motion-hover class="panel panel-hover rounded-3xl p-5 text-[color:var(--color-text-soft)]">
+          <span class="lang-es">{item}</span>
+          <span class="lang-en">{impactHighlightsEn[index]}</span>
+        </li>
+      ))}
+    </ul>
+  </Section>
+
+  <Section titleEs="Datos importantes para postulacion" titleEn="Application highlights" className="">
+    <ul data-motion-stagger class="grid gap-4 md:grid-cols-2">
+      {applicationHighlights.map((item, index) => (
+        <li data-motion-reveal data-motion-hover class="panel panel-hover rounded-3xl p-5 text-[color:var(--color-text-soft)]">
+          <span class="lang-es">{item}</span>
+          <span class="lang-en">{applicationHighlightsEn[index]}</span>
+        </li>
+      ))}
+    </ul>
+  </Section>
+</MainLayout>

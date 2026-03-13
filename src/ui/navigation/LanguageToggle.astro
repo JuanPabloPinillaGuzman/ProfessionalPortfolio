@@ -1,0 +1,45 @@
+<div class="inline-flex items-center rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-1 text-xs font-bold">
+  <button
+    type="button"
+    data-lang-btn="es"
+    class="rounded-full px-3 py-1 transition hover:bg-[color:var(--color-surface-muted)]"
+  >
+    ES
+  </button>
+  <button
+    type="button"
+    data-lang-btn="en"
+    class="rounded-full px-3 py-1 transition hover:bg-[color:var(--color-surface-muted)]"
+  >
+    EN
+  </button>
+</div>
+
+<script>
+  const LANG_KEY = 'portfolio-lang';
+
+  const applyLanguage = (lang) => {
+    const safeLang = lang === 'en' ? 'en' : 'es';
+    document.documentElement.dataset.lang = safeLang;
+    document.documentElement.lang = safeLang;
+
+    document.querySelectorAll('[data-lang-btn]').forEach((button) => {
+      if (!(button instanceof HTMLButtonElement)) return;
+      const active = button.dataset.langBtn === safeLang;
+      button.style.background = active ? 'var(--color-accent)' : 'transparent';
+      button.style.color = active ? '#fff' : 'var(--color-text-soft)';
+    });
+  };
+
+  const initial = localStorage.getItem(LANG_KEY) ?? (navigator.language.startsWith('en') ? 'en' : 'es');
+  applyLanguage(initial);
+
+  document.querySelectorAll('[data-lang-btn]').forEach((button) => {
+    if (!(button instanceof HTMLButtonElement)) return;
+    button.addEventListener('click', () => {
+      const selected = button.dataset.langBtn === 'en' ? 'en' : 'es';
+      localStorage.setItem(LANG_KEY, selected);
+      applyLanguage(selected);
+    });
+  });
+</script>

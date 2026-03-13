@@ -1,0 +1,28 @@
+---
+import NavLink from './NavLink.astro';
+import LanguageToggle from './LanguageToggle.astro';
+import { siteConfig } from '../../config/site';
+
+const links = [
+  { href: '/', labelEs: 'Inicio', labelEn: 'Home' },
+  { href: '/about', labelEs: 'Sobre mi', labelEn: 'About' },
+  { href: '/projects', labelEs: 'Proyectos', labelEn: 'Projects' },
+  { href: '/contact', labelEs: 'Contacto', labelEn: 'Contact' }
+];
+---
+<header data-motion="header" class="sticky top-0 z-20 border-b border-[color:var(--color-border)]/70 bg-[color:var(--color-surface)]/85 backdrop-blur">
+  <div class="container-shell py-4">
+    <div class="surface-glass cut-corner flex flex-col gap-2 rounded-2xl px-3 py-2 sm:flex-row sm:items-center sm:justify-between sm:px-4">
+      <a href="/" class="rounded-xl px-3 py-2 text-base font-bold tracking-tight text-[color:var(--color-text)] transition hover:bg-[color:var(--color-surface)]">
+        {siteConfig.shortName}
+      </a>
+
+      <div class="flex flex-wrap items-center gap-2">
+        <nav aria-label="Main navigation" data-motion-stagger class="flex flex-wrap items-center gap-1">
+          {links.map((link) => <NavLink {...link} />)}
+        </nav>
+        <LanguageToggle />
+      </div>
+    </div>
+  </div>
+</header>
