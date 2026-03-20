@@ -1,22 +1,23 @@
 ---
-title: "Sistema de Gestión Integral para Cuerpo de Bomberos"
-titleEn: "Integrated Management System for Fire Department Operations"
-summary: "Proyecto web orientado a la administración de procesos operativos y administrativos para una organización de emergencia."
-summaryEn: "Web project focused on managing operational and administrative workflows for an emergency-response organization."
-problem: "La operación requería centralizar módulos críticos como emergencias, vehículos, talento humano, gestión del riesgo, usuarios y ubicaciones, evitando procesos dispersos."
-problemEn: "Operations required centralizing critical modules such as emergencies, vehicles, human resources, risk management, users, and locations to avoid fragmented workflows."
-solution: "Participé en backend, bases de datos y lógica de negocio, además de apoyar integración frontend con tecnologías modernas para mantener trazabilidad y operación coordinada."
-solutionEn: "I contributed to backend, database modeling, and business logic, while also supporting frontend integration with modern technologies to keep traceability and coordinated operations."
+title: "ProfessionalPortfolio"
+titleEn: "ProfessionalPortfolio"
+summary: "Portafolio personal bilingüe construido con Astro para presentar experiencia, proyectos y perfil profesional en una interfaz moderna."
+summaryEn: "Bilingual personal portfolio built with Astro to present experience, projects, and professional profile in a modern interface."
+problem: "Necesitaba una presencia web propia para consolidar proyectos, narrativa profesional y contacto en una base rápida, mantenible y fácil de ampliar."
+problemEn: "I needed a personal web presence to consolidate projects, professional narrative, and contact details on a fast, maintainable, and extensible foundation."
+solution: "Diseñé y desarrollé un sitio estático con Astro, colecciones de contenido, navegación bilingüe, componentes reutilizables y una dirección visual enfocada en claridad y presentación técnica."
+solutionEn: "I designed and built a static site with Astro, content collections, bilingual navigation, reusable components, and a visual direction focused on clarity and technical presentation."
 technologies:
-  - Python
+  - Astro
+  - Tailwind CSS
   - JavaScript
-  - PostgreSQL
-  - Desarrollo Web
-result: "Se logró una plataforma más organizada, con mejor control de información y soporte a procesos clave de operación institucional."
-resultEn: "Delivered a more organized platform with stronger information control and better support for mission-critical institutional operations."
+  - Content Collections
+result: "El repositorio consolidó una base publicable para el portafolio, con contenido editable, estructura escalable y una experiencia visual coherente para mostrar trabajo real."
+resultEn: "The repository established a publishable portfolio base with editable content, scalable structure, and a coherent visual experience to showcase real work."
 cover: "/visuals/project-astro.svg"
 featured: true
 year: 2026
-repoUrl: "https://github.com/JuanPabloPinillaGuzman"
+repoUrl: "https://github.com/JuanPabloPinillaGuzman/ProfessionalPortfolio"
+liveUrl: "https://juanpablopinilla.dev"
 ---
-Este proyecto fortaleció mi experiencia en arquitectura de datos, lógica de negocio y coordinación entre áreas técnicas y operativas.
+Este proyecto refleja mi capacidad para convertir experiencia técnica en una presentación clara, mantenible y orientada a producto.

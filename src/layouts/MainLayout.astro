@@ -47,21 +47,19 @@ const canonicalUrl = new URL(canonicalPath, Astro.site);
   </head>
   <body class="text-[color:var(--color-text)] antialiased">
     <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-      <div data-motion-float class="absolute -left-20 top-8 h-72 w-72 rounded-full bg-orange-300/20 blur-3xl"></div>
-      <div data-motion-float class="absolute right-0 top-56 h-80 w-80 rounded-full bg-teal-300/20 blur-3xl"></div>
-      <div data-motion-float class="absolute bottom-0 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-amber-200/20 blur-3xl"></div>
-      <div data-motion-float class="absolute left-[8%] top-[28%] h-28 w-28 rounded-3xl border border-orange-200/60 bg-white/20 backdrop-blur-md"></div>
-      <div data-motion-float class="absolute right-[12%] top-[18%] h-20 w-20 rotate-12 rounded-xl border border-teal-200/60 bg-white/20 backdrop-blur-md"></div>
-      <svg class="absolute bottom-[14%] left-[15%] h-24 w-24 text-orange-200/70" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-        <path d="M15 50C15 30.67 30.67 15 50 15C69.33 15 85 30.67 85 50C85 69.33 69.33 85 50 85C30.67 85 15 69.33 15 50Z" stroke="currentColor" stroke-width="2"/>
-        <circle cx="50" cy="15" r="4" fill="currentColor"/>
-      </svg>
+      <div data-motion-float class="absolute -left-16 top-10 h-72 w-72 rounded-full bg-cyan-300/10 blur-3xl"></div>
+      <div data-motion-float class="absolute right-[-6rem] top-44 h-80 w-80 rounded-full bg-sky-400/10 blur-3xl"></div>
+      <div data-motion-float class="absolute bottom-[-4rem] left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-emerald-300/8 blur-3xl"></div>
+      <div class="absolute inset-x-[6%] top-24 h-px bg-gradient-to-r from-transparent via-cyan-300/25 to-transparent"></div>
+      <div class="absolute inset-y-[12%] right-[8%] w-px bg-gradient-to-b from-transparent via-cyan-300/15 to-transparent"></div>
+      <div data-motion-float class="absolute left-[10%] top-[22%] h-24 w-24 rounded-[1.75rem] border border-cyan-200/10 bg-white/2 backdrop-blur-sm"></div>
+      <div data-motion-float class="absolute bottom-[18%] right-[14%] h-20 w-20 rotate-12 border border-sky-200/12 bg-white/2"></div>
     </div>
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:shadow-lg">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-[color:var(--color-surface-muted)] focus:px-4 focus:py-2 focus:text-[color:var(--color-text)] focus:shadow-lg">
       Skip to content
     </a>
     <Header />
-    <main id="main-content" class="pb-8">
+    <main id="main-content" class="pb-10">
       <slot />
     </main>
     <Footer />

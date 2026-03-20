@@ -1,21 +1,23 @@
 ---
-title: "Sistema de Inventario y Ventas"
-titleEn: "Inventory and Sales Management System"
-summary: "Solución orientada al control de productos, stock, movimientos de inventario, órdenes y gestión comercial."
-summaryEn: "Solution focused on managing products, stock, inventory movements, orders, and commercial operations."
-problem: "Era necesario organizar el flujo operativo para reducir inconsistencias en existencias y mejorar el seguimiento de operaciones comerciales."
-problemEn: "It was necessary to organize operational flow to reduce stock inconsistencies and improve commercial process tracking."
-solution: "Desarrollé componentes de lógica de negocio y estructura de datos para soportar trazabilidad de inventario, procesos de venta y control operativo."
-solutionEn: "I developed business-logic components and data structures to support inventory traceability, sales workflows, and operational control."
+title: "AutoTaller"
+titleEn: "AutoTaller"
+summary: "Backend para un sistema automotriz orientado a la gestión integral de clientes, vehículos, órdenes de servicio, inventario, facturación y auditoría."
+summaryEn: "Backend for an automotive system focused on managing clients, vehicles, service orders, inventory, billing, and audit trails."
+problem: "Un taller automotriz necesita centralizar operaciones críticas para evitar procesos manuales dispersos entre recepción, diagnóstico, repuestos, pagos y seguimiento."
+problemEn: "An automotive workshop needs to centralize critical operations to avoid fragmented manual processes across intake, diagnostics, spare parts, billing, and follow-up."
+solution: "Participé en un backend con ASP.NET Core, Entity Framework Core, SQL Server y arquitectura en capas para soportar módulos operativos, seguridad, roles y trazabilidad del negocio."
+solutionEn: "I contributed to a backend using ASP.NET Core, Entity Framework Core, SQL Server, and a layered architecture to support operational modules, security, roles, and business traceability."
 technologies:
   - C#
-  - JavaScript
-  - MySQL
-  - PostgreSQL
-result: "El sistema permitió mejorar organización de procesos, control de stock y consistencia en la gestión de movimientos y órdenes."
-resultEn: "The system improved process organization, stock control, and consistency in movement and order management."
+  - ASP.NET Core
+  - Entity Framework Core
+  - SQL Server
+  - Arquitectura en capas
+result: "El repositorio documenta un flujo completo de taller automotriz y una base backend preparada para administrar órdenes, inventario, facturas y controles de auditoría."
+resultEn: "The repository documents a complete automotive workshop flow and a backend foundation ready to manage orders, inventory, invoices, and audit controls."
 cover: "/visuals/project-dashboard.svg"
 featured: true
 year: 2025
+repoUrl: "https://github.com/JuanPabloPinillaGuzman/ProyectoFinal"
 ---
-Este trabajo consolidó mis habilidades en modelado relacional, implementación de reglas de negocio y estructuración de soluciones orientadas a operación real.
+Proyecto colaborativo que reforzó mi experiencia en backend transaccional, organización por capas y modelado orientado a procesos reales.

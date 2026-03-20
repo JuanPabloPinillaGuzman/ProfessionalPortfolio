@@ -1,21 +1,22 @@
 ---
-title: "Generación de Documentos y Formatos PDF"
-titleEn: "PDF Documents and Structured Format Generation"
-summary: "Desarrollo de soluciones para generación dinámica de documentos y formatos estructurados."
-summaryEn: "Development of solutions for dynamic document generation and structured output formats."
-problem: "Se requería producir formatos consistentes, con datos variables y presentación clara, evitando tareas manuales repetitivas."
-problemEn: "The project required generating consistent formats with variable data and clear presentation, reducing repetitive manual tasks."
-solution: "Implementé lógica para estructurar información, mapear datos y generar documentos PDF con salida organizada y presentación profesional."
-solutionEn: "I implemented data-structuring logic, mapping pipelines, and PDF generation flows with organized output and professional presentation."
+title: "CampusLove"
+titleEn: "CampusLove"
+summary: "Aplicación de consola en C# para registro, autenticación, exploración de perfiles, interacciones y coincidencias entre usuarios."
+summaryEn: "C# console application for registration, authentication, profile browsing, user interactions, and matches."
+problem: "El reto consistía en modelar un dominio de matchmaking con usuarios, likes, coincidencias, estadísticas y persistencia relacional sin perder claridad en la estructura."
+problemEn: "The challenge was to model a matchmaking domain with users, likes, matches, statistics, and relational persistence while keeping the structure clear."
+solution: "Organicé la solución con capas de dominio, aplicación e infraestructura, integrando servicios para autenticación, usuarios, interacciones y estadísticas sobre MySQL."
+solutionEn: "I organized the solution with domain, application, and infrastructure layers, integrating services for authentication, users, interactions, and statistics on top of MySQL."
 technologies:
-  - Python
-  - JavaScript
-  - HTML/CSS
-  - Generación de PDF
-result: "Se mejoró la eficiencia en la creación de documentos, reduciendo errores manuales y manteniendo formatos estandarizados."
-resultEn: "Improved document creation efficiency by reducing manual errors and keeping standardized output formats."
+  - C#
+  - MySQL
+  - Consola
+  - Arquitectura por capas
+result: "El repositorio muestra un flujo funcional de registro, login, exploración de perfiles, matches y estadísticas para una aplicación orientada a interacción entre usuarios."
+resultEn: "The repository shows a functional flow for sign-up, login, profile browsing, matches, and statistics in a user-interaction-oriented application."
 cover: "/visuals/project-design-system.svg"
 featured: false
-year: 2024
+year: 2025
+repoUrl: "https://github.com/JuanPabloPinillaGuzman/CampusLove"
 ---
-Este proyecto me permitió combinar precisión en la lógica de datos con cuidado en la presentación final de la información.
+Este proyecto fortaleció mi manejo de lógica de negocio, flujo de consola y separación de responsabilidades en aplicaciones con persistencia.

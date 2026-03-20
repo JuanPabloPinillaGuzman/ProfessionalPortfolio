@@ -1,15 +1,22 @@
 ---
 import { siteConfig } from '../../config/site';
 ---
-<footer data-motion-reveal class="mt-6 border-t border-[color:var(--color-border)]/85 bg-[color:var(--color-surface)]/75 backdrop-blur">
-  <div class="container-shell flex flex-col gap-4 py-8 text-sm text-[color:var(--color-text-soft)] sm:flex-row sm:items-center sm:justify-between">
-    <p>
-      <span class="lang-es">© {new Date().getFullYear()} {siteConfig.shortName}. Hecho con Astro.</span>
-      <span class="lang-en">© {new Date().getFullYear()} {siteConfig.shortName}. Built with Astro.</span>
-    </p>
-    <div class="flex items-center gap-4">
-      <a href={siteConfig.github} target="_blank" rel="noreferrer" class="font-semibold hover:text-[color:var(--color-accent)]">GitHub</a>
-      <a href={siteConfig.linkedin} target="_blank" rel="noreferrer" class="font-semibold hover:text-[color:var(--color-accent)]">LinkedIn</a>
+<footer data-motion-reveal class="mt-10 border-t border-[color:var(--color-border)] bg-[rgba(5,8,14,0.82)]">
+  <div class="container-shell flex flex-col gap-5 py-8 text-sm text-[color:var(--color-text-soft)] sm:flex-row sm:items-center sm:justify-between">
+    <div>
+      <p class="font-semibold uppercase tracking-[0.3em] text-[color:var(--color-text)]">Portafolio Profesional</p>
+      <p class="mt-2 max-w-xl text-sm">
+        <span class="lang-es">© {new Date().getFullYear()} {siteConfig.name}. Portafolio con enfoque en sistemas, producto y ejecucion real.</span>
+        <span class="lang-en">© {new Date().getFullYear()} {siteConfig.name}. Portfolio focused on systems, product thinking, and real execution.</span>
+      </p>
+    </div>
+    <div class="flex flex-wrap items-center gap-5 text-xs font-semibold uppercase tracking-[0.22em]">
+      <a href={siteConfig.github} target="_blank" rel="noreferrer" class="transition hover:text-[color:var(--color-accent)]">GitHub</a>
+      <a href={siteConfig.linkedin} target="_blank" rel="noreferrer" class="transition hover:text-[color:var(--color-accent)]">LinkedIn</a>
+      <a href="/projects" class="transition hover:text-[color:var(--color-accent)]">
+        <span class="lang-es">Proyectos</span>
+        <span class="lang-en">Projects</span>
+      </a>
     </div>
   </div>
 </footer>

@@ -1,14 +1,10 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import Section from '../ui/layout/Section.astro';
-import SkillBadge from '../ui/cards/SkillBadge.astro';
-import ProjectCard from '../ui/cards/ProjectCard.astro';
 import {
   siteConfig,
-  skills,
   professionalSummary,
-  impactHighlights,
   professionalSummaryEn,
+  impactHighlights,
   impactHighlightsEn
 } from '../config/site';
 import { getCollection } from 'astro:content';
@@ -17,6 +13,70 @@ const featuredProjects = (await getCollection('projects'))
   .filter((project) => project.data.featured)
   .sort((a, b) => b.data.year - a.data.year)
   .slice(0, 2);
+
+const stackGrid = [
+  {
+    label: 'PYTHON',
+    detailEs: 'Automatizacion, logica de negocio y servicios backend.',
+    detailEn: 'Automation, business logic, and backend services.'
+  },
+  {
+    label: 'C# / .NET',
+    detailEs: 'Sistemas transaccionales y reglas operativas.',
+    detailEn: 'Transactional systems and operational rules.'
+  },
+  {
+    label: 'JAVASCRIPT',
+    detailEs: 'Interfaces web con foco en claridad y mantenimiento.',
+    detailEn: 'Web interfaces focused on clarity and maintainability.'
+  },
+  {
+    label: 'SQL / DATA',
+    detailEs: 'Modelado relacional, consultas y consistencia de datos.',
+    detailEn: 'Relational modeling, queries, and data consistency.'
+  },
+  {
+    label: 'WEB APPS',
+    detailEs: 'Productos conectados a procesos reales y usuarios reales.',
+    detailEn: 'Products connected to real workflows and users.'
+  },
+  {
+    label: 'TEAM FLOW',
+    detailEs: 'GitHub, colaboracion y entrega ordenada.',
+    detailEn: 'GitHub, collaboration, and organized delivery.'
+  }
+] as const;
+
+const proofMetrics = [
+  { value: '02', labelEs: 'proyectos destacados', labelEn: 'featured systems' },
+  { value: '06', labelEs: 'capacidades nucleares', labelEn: 'core capabilities' },
+  { value: '100%', labelEs: 'enfoque practico', labelEn: 'practical mindset' },
+  { value: '24/7', labelEs: 'mentalidad de soporte', labelEn: 'support mindset' }
+] as const;
+
+const operatingModes = [
+  {
+    id: '01',
+    titleEs: 'Arquitectura legible',
+    titleEn: 'Readable architecture',
+    copyEs: impactHighlights[1],
+    copyEn: impactHighlightsEn[1]
+  },
+  {
+    id: '02',
+    titleEs: 'Colaboracion estable',
+    titleEn: 'Stable collaboration',
+    copyEs: impactHighlights[0],
+    copyEn: impactHighlightsEn[0]
+  },
+  {
+    id: '03',
+    titleEs: 'Ejecucion confiable',
+    titleEn: 'Reliable execution',
+    copyEs: impactHighlights[2],
+    copyEn: impactHighlightsEn[2]
+  }
+] as const;
 ---
 
 <MainLayout
@@ -24,132 +84,448 @@ const featuredProjects = (await getCollection('projects'))
   description={siteConfig.description}
   canonicalPath="/"
 >
-  <section class="pt-10 sm:pt-16">
-    <div class="container-shell grid items-start gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-      <div data-motion-reveal class="panel cut-corner relative overflow-hidden rounded-3xl p-7 sm:p-10">
-        <div class="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-[color:var(--color-accent)]/16 blur-2xl"></div>
-        <div class="absolute bottom-5 right-7 h-2 w-20 rounded-full bg-[color:var(--color-highlight)]/50"></div>
-        <p class="eyebrow">
-          <span class="lang-es">{siteConfig.roleEs}</span>
-          <span class="lang-en">{siteConfig.roleEn}</span>
-        </p>
-        <h1 data-motion="hero-title" class="display-title text-balance mt-4 text-5xl font-semibold leading-[1.04] text-[color:var(--color-text)] sm:text-7xl">
-          {siteConfig.name}
-        </h1>
-        <p data-motion="hero-copy" class="mt-4 max-w-2xl text-lg text-[color:var(--color-text-soft)]">
-          <span class="lang-es">{professionalSummary}</span>
-          <span class="lang-en">{professionalSummaryEn}</span>
-        </p>
-        <p class="mt-3 text-sm font-semibold tracking-wide text-[color:var(--color-text-soft)]/90">
-          <span class="lang-es">{siteConfig.location}</span>
-          <span class="lang-en">{siteConfig.locationEn}</span>
-        </p>
+  <section class="hero-section pt-8 sm:pt-12">
+    <div class="container-shell">
+      <div class="hero-shell">
+        <div data-motion-reveal class="hero-copy panel cut-corner rounded-[2rem] p-7 sm:p-10">
+          <div class="hero-copy__grid">
+            <div>
+              <p class="eyebrow rounded-full border border-cyan-300/20 bg-cyan-300/6 px-4 py-2">
+                <span class="lang-es">sistema online // estado: disponible</span>
+                <span class="lang-en">system online // status: available</span>
+              </p>
+              <h1 data-motion="hero-title" class="display-title name-lockup mt-8 text-balance text-5xl font-semibold uppercase leading-[0.92] sm:text-7xl lg:text-[5.4rem]">
+                <span class="block text-white">Juan Pablo</span>
+                <span class="hero-accent block">Pinilla</span>
+              </h1>
+              <p class="mt-6 max-w-2xl text-base leading-8 text-[color:var(--color-text-soft)] sm:text-lg">
+                <span class="lang-es">{professionalSummary}</span>
+                <span class="lang-en">{professionalSummaryEn}</span>
+              </p>
+              <div class="mt-6 flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--color-text-soft)]">
+                <span class="rounded-full border border-[color:var(--color-border)] px-4 py-2">
+                  <span class="lang-es">{siteConfig.roleEs}</span>
+                  <span class="lang-en">{siteConfig.roleEn}</span>
+                </span>
+                <span class="rounded-full border border-[color:var(--color-border)] px-4 py-2">
+                  <span class="lang-es">{siteConfig.location}</span>
+                  <span class="lang-en">{siteConfig.locationEn}</span>
+                </span>
+              </div>
+              <div data-motion-stagger class="mt-8 flex flex-wrap gap-3">
+                <a data-motion-hover href="/projects" class="rounded-full bg-[color:var(--color-accent)] px-6 py-3 text-sm font-bold uppercase tracking-[0.22em] text-slate-950 transition hover:bg-[color:var(--color-highlight)]">
+                  <span class="lang-es">Explorar trabajo</span>
+                  <span class="lang-en">Explore work</span>
+                </a>
+                <a data-motion-hover href={siteConfig.linkedin} target="_blank" rel="noreferrer" class="rounded-full border border-[color:var(--color-border)] bg-white/2 px-6 py-3 text-sm font-bold uppercase tracking-[0.22em] text-[color:var(--color-text)] transition hover:border-cyan-300/45 hover:text-[color:var(--color-accent)]">
+                  LinkedIn
+                </a>
+                <a data-motion-hover href="/contact" class="rounded-full border border-[color:var(--color-border)] bg-white/2 px-6 py-3 text-sm font-bold uppercase tracking-[0.22em] text-[color:var(--color-text)] transition hover:border-cyan-300/45 hover:text-[color:var(--color-accent)]">
+                  <span class="lang-es">Iniciar contacto</span>
+                  <span class="lang-en">Start contact</span>
+                </a>
+              </div>
+            </div>
 
-        <div data-motion-stagger class="mt-8 flex flex-wrap gap-3">
-          <a data-motion-hover href="/projects" class="rounded-full bg-[color:var(--color-accent)] px-6 py-3 font-semibold text-white transition hover:bg-[color:var(--color-accent-soft)]">
-            <span class="lang-es">Ver proyectos</span>
-            <span class="lang-en">View projects</span>
-          </a>
-          <a data-motion-hover href="/contact" class="rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-6 py-3 font-semibold text-[color:var(--color-text)] transition hover:border-[color:var(--color-accent-soft)] hover:text-[color:var(--color-accent)]">
-            <span class="lang-es">Contactame</span>
-            <span class="lang-en">Contact me</span>
-          </a>
+            <aside data-motion-stagger class="hero-aside">
+              <article data-motion-reveal class="console-card panel rounded-[1.75rem] p-5">
+                <div class="mb-5 flex items-center gap-2">
+                  <span class="h-2.5 w-2.5 rounded-full bg-rose-300/80"></span>
+                  <span class="h-2.5 w-2.5 rounded-full bg-amber-200/80"></span>
+                  <span class="h-2.5 w-2.5 rounded-full bg-cyan-300/80"></span>
+                </div>
+                <p class="font-mono text-xs uppercase tracking-[0.28em] text-[color:var(--color-text-soft)]">
+                  <span class="lang-es">Inicializando secuencia profesional...</span>
+                  <span class="lang-en">Initializing professional sequence...</span>
+                </p>
+                <div class="mt-5 space-y-3 font-mono text-sm text-[color:var(--color-text-soft)]">
+                  <p><span class="text-[color:var(--color-accent)]">const engineer</span> = {'{'}</p>
+                  <p class="pl-4">name: <span class="text-white">"Juan Pablo Pinilla"</span>,</p>
+                  <p class="pl-4">focus: <span class="text-white">"Product + Systems"</span>,</p>
+                  <p class="pl-4">stack: <span class="text-white">["Python", "C#", "JavaScript", "SQL"]</span>,</p>
+                  <p class="pl-4">mode: <span class="text-white">"Build / Refine / Ship"</span></p>
+                  <p>{'}'}</p>
+                </div>
+                <div class="mt-6">
+                  <div class="h-1.5 rounded-full bg-white/6">
+                    <div class="h-1.5 w-[84%] rounded-full bg-gradient-to-r from-[color:var(--color-accent)] to-[color:var(--color-highlight)]"></div>
+                  </div>
+                  <p class="mt-3 text-xs uppercase tracking-[0.22em] text-[color:var(--color-text-soft)]">
+                    <span class="lang-es">cargando modulo visual...</span>
+                    <span class="lang-en">loading visual module...</span>
+                  </p>
+                </div>
+              </article>
+
+              <article data-motion-reveal class="panel rounded-[1.75rem] p-5">
+                <p class="eyebrow">signal_trace</p>
+                <p class="mt-3 text-xl font-semibold text-[color:var(--color-text)]">
+                  <span class="lang-es">Ingenieria orientada a sistemas legibles, utiles y mantenibles.</span>
+                  <span class="lang-en">Engineering focused on readable, useful, and maintainable systems.</span>
+                </p>
+                <p class="mt-4 text-sm leading-7 text-[color:var(--color-text-soft)]">
+                  <span class="lang-es">Combino backend, bases de datos y frontend para construir software que realmente soporte operaciones, equipos y decisiones.</span>
+                  <span class="lang-en">I combine backend, databases, and frontend to build software that truly supports operations, teams, and decisions.</span>
+                </p>
+              </article>
+            </aside>
+          </div>
+
+          <div class="hero-code absolute bottom-7 right-8 hidden font-mono text-[4rem] font-bold uppercase tracking-[-0.08em] text-white/6 lg:block">
+            0X86F5FF
+          </div>
         </div>
       </div>
-
-      <aside data-motion-stagger class="grid gap-4">
-        <article data-motion-reveal class="panel relative overflow-hidden rounded-3xl p-6">
-          <div data-motion-float class="absolute -right-6 -top-6 h-16 w-16 rounded-full border border-orange-200 bg-orange-100/80"></div>
-          <p class="text-xs font-bold uppercase tracking-[0.12em] text-[color:var(--color-accent)]">
-            <span class="lang-es">Enfoque</span>
-            <span class="lang-en">Positioning</span>
-          </p>
-          <h2 class="mt-2 text-2xl font-bold text-[color:var(--color-text)]">
-            <span class="lang-es">Ingenieria orientada a producto</span>
-            <span class="lang-en">Product-minded engineering</span>
-          </h2>
-          <p class="mt-3 text-[color:var(--color-text-soft)]">
-            <span class="lang-es">Construyo software funcional, escalable y mantenible para necesidades reales.</span>
-            <span class="lang-en">I build functional, scalable, and maintainable software for real-world needs.</span>
-          </p>
-        </article>
-        <article data-motion-reveal class="panel rounded-3xl bg-[#2f241a] p-6 text-amber-50">
-          <p class="text-xs font-bold uppercase tracking-[0.12em] text-orange-200">
-            <span class="lang-es">Propuesta central</span>
-            <span class="lang-en">Core promise</span>
-          </p>
-          <p class="mt-3 text-balance text-xl font-semibold leading-snug">
-            <span class="lang-es">Arquitectura clara, entrega organizada y enfoque real en el usuario.</span>
-            <span class="lang-en">Clear architecture, organized delivery, and real user focus.</span>
-          </p>
-        </article>
-        <figure data-motion-reveal class="panel relative overflow-hidden rounded-3xl p-3">
-          <img
-            src="/visuals/hero-lab.svg"
-            alt="Creative scene representing software architecture and product flow."
-            class="h-48 w-full rounded-2xl object-cover sm:h-56"
-            loading="eager"
-          />
-          <figcaption class="px-2 pb-2 pt-3 text-sm font-semibold text-[color:var(--color-text-soft)]">
-            <span class="lang-es">Pensamiento sistemico para entregar soluciones reales.</span>
-            <span class="lang-en">Systems thinking for practical product delivery.</span>
-          </figcaption>
-          <span data-motion-float class="absolute bottom-5 right-5 rounded-full border border-teal-300 bg-teal-50 px-3 py-1 text-xs font-bold text-teal-700">
-            Build. Refine. Ship.
-          </span>
-        </figure>
-      </aside>
     </div>
   </section>
 
-  <Section
-    titleEs="Fortalezas tecnicas"
-    titleEn="Core technical strengths"
-    subtitleEs="Stack y practicas de ingenieria para construir soluciones confiables."
-    subtitleEn="Focused stack and engineering practices used to build reliable software solutions."
-    className=""
-  >
-    <ul data-motion-stagger class="flex flex-wrap gap-3">
-      {skills.map((skill) => <SkillBadge value={skill} />)}
-    </ul>
-  </Section>
+  <section class="py-14 sm:py-18">
+    <div class="container-shell">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">core_competencies</p>
+          <h2 class="display-title mt-3 text-4xl font-semibold uppercase sm:text-5xl">Engineering_Stack</h2>
+        </div>
+        <p class="max-w-2xl text-sm leading-7 text-[color:var(--color-text-soft)] sm:text-base">
+          <span class="lang-es">Un stack enfocado en resolver operaciones reales: automatizacion, modelado de datos, interfaces funcionales y colaboracion tecnica ordenada.</span>
+          <span class="lang-en">A stack focused on solving real operations: automation, data modeling, functional interfaces, and organized technical collaboration.</span>
+        </p>
+      </div>
 
-  <Section
-    titleEs="Impacto profesional"
-    titleEn="Professional impact"
-    subtitleEs="Como aporto valor en proyectos y equipos de desarrollo."
-    subtitleEn="How I contribute to product and engineering outcomes."
-    className=""
-  >
-    <ul data-motion-stagger class="grid gap-4 md:grid-cols-3">
-      {impactHighlights.map((item, index) => (
-        <li data-motion-reveal data-motion-hover class:list={[
-          'panel panel-hover rounded-3xl p-5 text-[color:var(--color-text-soft)]',
-          index === 1 && 'md:-translate-y-2'
-        ]}>
-          <span class="lang-es">{item}</span>
-          <span class="lang-en">{impactHighlightsEn[index]}</span>
-        </li>
-      ))}
-    </ul>
-  </Section>
+      <div data-motion-stagger class="stack-grid mt-8">
+        {stackGrid.map((item) => (
+          <article data-motion-reveal data-motion-hover class="stack-card panel rounded-[1.5rem] p-5">
+            <span class="stack-card__icon">&lt;/&gt;</span>
+            <h3 class="mt-6 text-lg font-semibold uppercase tracking-[0.18em] text-[color:var(--color-text)]">{item.label}</h3>
+            <p class="mt-3 text-sm leading-7 text-[color:var(--color-text-soft)]">
+              <span class="lang-es">{item.detailEs}</span>
+              <span class="lang-en">{item.detailEn}</span>
+            </p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
 
-  <Section
-    titleEs="Proyectos destacados"
-    titleEn="Featured projects"
-    subtitleEs="Experiencia en proyectos con enfoque practico y resultados funcionales."
-    subtitleEn="Selected work with practical outcomes and production-oriented decisions."
-    className=""
-  >
-    <div data-motion-stagger class="grid gap-6 md:grid-cols-2">
-      {featuredProjects.map((project) => <ProjectCard project={project} />)}
+  <section class="py-10 sm:py-14">
+    <div class="container-shell">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">deployed_solutions</p>
+          <h2 class="display-title mt-3 text-4xl font-semibold uppercase sm:text-5xl">Selected_Projects</h2>
+        </div>
+        <p class="max-w-2xl text-sm leading-7 text-[color:var(--color-text-soft)] sm:text-base">
+          <span class="lang-es">Proyectos donde participe en modelado, logica, integracion y estructura operativa para problemas concretos.</span>
+          <span class="lang-en">Projects where I contributed to modeling, logic, integration, and operational structure for concrete problems.</span>
+        </p>
+      </div>
+
+      <div data-motion-stagger class="project-grid mt-8">
+        {featuredProjects.map((project, index) => (
+          <article data-motion-reveal data-motion-hover class="group project-card panel overflow-hidden rounded-[1.8rem]">
+            <div class="project-card__visual">
+              {project.data.cover && (
+                <img
+                  src={project.data.cover}
+                  alt={`${project.data.title} concept art`}
+                  loading="lazy"
+                  class="h-full w-full object-cover opacity-80 grayscale transition duration-500 group-hover:scale-[1.02]"
+                />
+              )}
+              <div class="project-card__overlay"></div>
+            </div>
+
+            <div class="p-6 sm:p-7">
+              <div class="flex items-center justify-between gap-4">
+                <div class="flex flex-wrap gap-2">
+                  {project.data.technologies.slice(0, 3).map((tech) => (
+                    <span class="rounded-full border border-cyan-300/16 bg-cyan-300/8 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-accent)]">{tech}</span>
+                  ))}
+                </div>
+                <span class="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-text-soft)]">
+                  {project.data.year}
+                </span>
+              </div>
+
+              <h3 class="mt-5 text-2xl font-semibold uppercase tracking-tight text-[color:var(--color-text)] sm:text-3xl">
+                <span class="lang-es">{project.data.title}</span>
+                <span class="lang-en">{project.data.titleEn ?? project.data.title}</span>
+              </h3>
+
+              <p class="mt-4 text-sm leading-7 text-[color:var(--color-text-soft)] sm:text-base">
+                <span class="lang-es">{project.data.summary}</span>
+                <span class="lang-en">{project.data.summaryEn ?? project.data.summary}</span>
+              </p>
+
+              <div class="mt-5 rounded-[1.2rem] border border-[color:var(--color-border)] bg-black/16 p-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-accent)]">
+                  <span class="lang-es">registro_operativo_{index + 1}</span>
+                  <span class="lang-en">operation_log_{index + 1}</span>
+                </p>
+                <p class="mt-3 text-sm leading-7 text-[color:var(--color-text-soft)]">
+                  <span class="lang-es">{project.data.result}</span>
+                  <span class="lang-en">{project.data.resultEn ?? project.data.result}</span>
+                </p>
+              </div>
+
+              <div class="mt-6 flex flex-wrap gap-3">
+                {project.data.repoUrl && (
+                  <a href={project.data.repoUrl} target="_blank" rel="noreferrer" class="rounded-full border border-[color:var(--color-border)] px-4 py-2 text-sm font-semibold uppercase tracking-[0.16em] text-[color:var(--color-text)] transition hover:border-cyan-300/45 hover:text-[color:var(--color-accent)]">
+                    GitHub
+                  </a>
+                )}
+                <a href="/projects" class="rounded-full bg-white/4 px-4 py-2 text-sm font-semibold uppercase tracking-[0.16em] text-[color:var(--color-text)] transition hover:bg-cyan-300/10 hover:text-[color:var(--color-accent)]">
+                  <span class="lang-es">Ver detalle</span>
+                  <span class="lang-en">View detail</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
-    <div class="mt-8">
-      <a data-motion-hover href="/projects" class="inline-flex items-center gap-2 font-semibold text-[color:var(--color-accent)] underline underline-offset-4 hover:text-[color:var(--color-accent-soft)]">
-        <span class="lang-es">Explorar todos los proyectos</span>
-        <span class="lang-en">Explore all projects</span>
-        <span aria-hidden="true">→</span>
-      </a>
+  </section>
+
+  <section class="py-8 sm:py-12">
+    <div class="container-shell">
+      <div data-motion-stagger class="metrics-strip panel cut-corner rounded-[2rem] px-6 py-8 sm:px-10">
+        {proofMetrics.map((metric) => (
+          <article data-motion-reveal class="metric-item">
+            <p class="text-4xl font-semibold tracking-[-0.06em] text-[color:var(--color-accent)] sm:text-5xl">{metric.value}</p>
+            <p class="mt-2 text-xs font-semibold uppercase tracking-[0.24em] text-[color:var(--color-text-soft)]">
+              <span class="lang-es">{metric.labelEs}</span>
+              <span class="lang-en">{metric.labelEn}</span>
+            </p>
+          </article>
+        ))}
+      </div>
     </div>
-  </Section>
+  </section>
+
+  <section class="py-14 sm:py-18">
+    <div class="container-shell">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">build_protocol</p>
+          <h2 class="display-title mt-3 text-4xl font-semibold uppercase sm:text-5xl">How_I_Work</h2>
+        </div>
+        <p class="max-w-2xl text-sm leading-7 text-[color:var(--color-text-soft)] sm:text-base">
+          <span class="lang-es">Mi forma de trabajo prioriza estructura, comunicacion y trazabilidad para que las soluciones no solo funcionen, sino que se puedan operar y mejorar.</span>
+          <span class="lang-en">My workflow prioritizes structure, communication, and traceability so solutions not only work, but can be operated and improved.</span>
+        </p>
+      </div>
+
+      <div data-motion-stagger class="mt-8 grid gap-5 lg:grid-cols-3">
+        {operatingModes.map((mode) => (
+          <article data-motion-reveal data-motion-hover class="panel rounded-[1.6rem] p-6">
+            <span class="inline-flex rounded-full border border-cyan-300/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--color-accent)]">
+              {mode.id}
+            </span>
+            <h3 class="mt-5 text-2xl font-semibold text-[color:var(--color-text)]">
+              <span class="lang-es">{mode.titleEs}</span>
+              <span class="lang-en">{mode.titleEn}</span>
+            </h3>
+            <p class="mt-4 text-sm leading-7 text-[color:var(--color-text-soft)]">
+              <span class="lang-es">{mode.copyEs}</span>
+              <span class="lang-en">{mode.copyEn}</span>
+            </p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-14 sm:py-20">
+    <div class="container-shell">
+      <div data-motion-reveal class="cta-shell panel cut-corner rounded-[2.2rem] px-6 py-14 text-center sm:px-10">
+        <p class="eyebrow justify-center">ready_to_build</p>
+        <h2 class="display-title mx-auto mt-5 max-w-4xl text-balance text-4xl font-semibold uppercase leading-[0.95] sm:text-6xl">
+          <span class="lang-es">Listo para construir productos y sistemas con criterio tecnico.</span>
+          <span class="lang-en">Ready to build products and systems with strong technical judgment.</span>
+        </h2>
+        <p class="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[color:var(--color-text-soft)] sm:text-base">
+          <span class="lang-es">Disponible para colaborar en retos de software, operaciones internas, plataformas web o soluciones que necesiten orden, mantenimiento y ejecucion real.</span>
+          <span class="lang-en">Available to collaborate on software challenges, internal operations, web platforms, or solutions that need order, maintainability, and real execution.</span>
+        </p>
+        <div data-motion-stagger class="mt-8 flex flex-wrap justify-center gap-3">
+          <a data-motion-hover href="/contact" class="rounded-full bg-[color:var(--color-accent)] px-6 py-3 text-sm font-bold uppercase tracking-[0.22em] text-slate-950 transition hover:bg-[color:var(--color-highlight)]">
+            <span class="lang-es">Inicializar contacto</span>
+            <span class="lang-en">Initialize contact</span>
+          </a>
+          <a data-motion-hover href={siteConfig.github} target="_blank" rel="noreferrer" class="rounded-full border border-[color:var(--color-border)] px-6 py-3 text-sm font-bold uppercase tracking-[0.22em] text-[color:var(--color-text)] transition hover:border-cyan-300/45 hover:text-[color:var(--color-accent)]">
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </MainLayout>
+
+<style>
+  .hero-shell {
+    position: relative;
+  }
+
+  .hero-shell::before {
+    content: '';
+    position: absolute;
+    inset: 2.5rem 0 auto;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(134, 245, 255, 0.22), transparent);
+  }
+
+  .hero-copy {
+    position: relative;
+    overflow: hidden;
+    min-height: min(48rem, 80vh);
+  }
+
+  .hero-copy::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 18% 18%, rgba(134, 245, 255, 0.14), transparent 26%),
+      radial-gradient(circle at 82% 24%, rgba(79, 199, 255, 0.12), transparent 20%),
+      linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.02));
+    pointer-events: none;
+  }
+
+  .hero-copy__grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 2rem;
+  }
+
+  .hero-accent {
+    color: transparent;
+    background: linear-gradient(180deg, var(--color-accent), var(--color-accent-soft));
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: 0 0 28px rgba(134, 245, 255, 0.18);
+  }
+
+  .hero-aside {
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+  }
+
+  .console-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .console-card::after {
+    content: '';
+    position: absolute;
+    inset: auto 1.5rem 1.5rem;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(134, 245, 255, 0.04), rgba(134, 245, 255, 0.6), transparent);
+  }
+
+  .section-header {
+    display: grid;
+    gap: 1rem;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1.5rem;
+  }
+
+  .stack-grid,
+  .project-grid {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .stack-card {
+    position: relative;
+    min-height: 16rem;
+  }
+
+  .stack-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(134, 245, 255, 0.2);
+    background: rgba(134, 245, 255, 0.08);
+    color: var(--color-accent);
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .project-card {
+    position: relative;
+  }
+
+  .project-card__visual {
+    position: relative;
+    height: 18rem;
+    overflow: hidden;
+    border-bottom: 1px solid var(--color-border);
+    background:
+      radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1), transparent 18%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  }
+
+  .project-card__overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(6, 9, 15, 0.1), rgba(6, 9, 15, 0.7)),
+      linear-gradient(135deg, rgba(134, 245, 255, 0.1), transparent 38%);
+  }
+
+  .metrics-strip {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .metric-item {
+    text-align: center;
+  }
+
+  .cta-shell {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-shell::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(134, 245, 255, 0.18), transparent 30%),
+      linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.02));
+    pointer-events: none;
+  }
+
+  @media (min-width: 900px) {
+    .hero-copy__grid {
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.78fr);
+      align-items: center;
+      min-height: 40rem;
+    }
+
+    .section-header {
+      grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1fr);
+      align-items: end;
+    }
+
+    .stack-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .project-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .metrics-strip {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+</style>
