@@ -1,15 +1,19 @@
-<div class="inline-flex items-center rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-1 text-xs font-bold">
+<div class="control-cluster text-xs font-bold uppercase tracking-[0.18em]" aria-label="Language selector">
   <button
     type="button"
     data-lang-btn="es"
-    class="rounded-full px-3 py-1 transition hover:bg-[color:var(--color-surface-muted)]"
+    data-active="false"
+    class="control-button px-3 py-2"
+    aria-pressed="false"
   >
     ES
   </button>
   <button
     type="button"
     data-lang-btn="en"
-    class="rounded-full px-3 py-1 transition hover:bg-[color:var(--color-surface-muted)]"
+    data-active="false"
+    class="control-button px-3 py-2"
+    aria-pressed="false"
   >
     EN
   </button>
@@ -26,12 +30,12 @@
     document.querySelectorAll('[data-lang-btn]').forEach((button) => {
       if (!(button instanceof HTMLButtonElement)) return;
       const active = button.dataset.langBtn === safeLang;
-      button.style.background = active ? 'var(--color-accent)' : 'transparent';
-      button.style.color = active ? '#fff' : 'var(--color-text-soft)';
+      button.dataset.active = active ? 'true' : 'false';
+      button.setAttribute('aria-pressed', active ? 'true' : 'false');
     });
   };
 
-  const initial = localStorage.getItem(LANG_KEY) ?? (navigator.language.startsWith('en') ? 'en' : 'es');
+  const initial = localStorage.getItem(LANG_KEY) ?? 'en';
   applyLanguage(initial);
 
   document.querySelectorAll('[data-lang-btn]').forEach((button) => {

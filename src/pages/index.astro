@@ -87,47 +87,74 @@ const operatingModes = [
   <section class="hero-section pt-8 sm:pt-12">
     <div class="container-shell">
       <div class="hero-shell">
-        <div data-motion-reveal class="hero-copy panel cut-corner rounded-[2rem] p-7 sm:p-10">
-          <div class="hero-copy__grid">
-            <div>
-              <p class="eyebrow rounded-full border border-cyan-300/20 bg-cyan-300/6 px-4 py-2">
-                <span class="lang-es">sistema online // estado: disponible</span>
-                <span class="lang-en">system online // status: available</span>
-              </p>
-              <h1 data-motion="hero-title" class="display-title name-lockup mt-8 text-balance text-5xl font-semibold uppercase leading-[0.92] sm:text-7xl lg:text-[5.4rem]">
-                <span class="block text-white">Juan Pablo</span>
-                <span class="hero-accent block">Pinilla</span>
-              </h1>
-              <p class="mt-6 max-w-2xl text-base leading-8 text-[color:var(--color-text-soft)] sm:text-lg">
-                <span class="lang-es">{professionalSummary}</span>
-                <span class="lang-en">{professionalSummaryEn}</span>
-              </p>
-              <div class="mt-6 flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--color-text-soft)]">
-                <span class="rounded-full border border-[color:var(--color-border)] px-4 py-2">
-                  <span class="lang-es">{siteConfig.roleEs}</span>
-                  <span class="lang-en">{siteConfig.roleEn}</span>
-                </span>
-                <span class="rounded-full border border-[color:var(--color-border)] px-4 py-2">
-                  <span class="lang-es">{siteConfig.location}</span>
-                  <span class="lang-en">{siteConfig.locationEn}</span>
-                </span>
-              </div>
-              <div data-motion-stagger class="mt-8 flex flex-wrap gap-3">
-                <a data-motion-hover href="/projects" class="rounded-full bg-[color:var(--color-accent)] px-6 py-3 text-sm font-bold uppercase tracking-[0.22em] text-slate-950 transition hover:bg-[color:var(--color-highlight)]">
-                  <span class="lang-es">Explorar trabajo</span>
-                  <span class="lang-en">Explore work</span>
-                </a>
-                <a data-motion-hover href={siteConfig.linkedin} target="_blank" rel="noreferrer" class="rounded-full border border-[color:var(--color-border)] bg-white/2 px-6 py-3 text-sm font-bold uppercase tracking-[0.22em] text-[color:var(--color-text)] transition hover:border-cyan-300/45 hover:text-[color:var(--color-accent)]">
-                  LinkedIn
-                </a>
-                <a data-motion-hover href="/contact" class="rounded-full border border-[color:var(--color-border)] bg-white/2 px-6 py-3 text-sm font-bold uppercase tracking-[0.22em] text-[color:var(--color-text)] transition hover:border-cyan-300/45 hover:text-[color:var(--color-accent)]">
-                  <span class="lang-es">Iniciar contacto</span>
-                  <span class="lang-en">Start contact</span>
-                </a>
-              </div>
+        <div class="hero-grid panel cut-corner rounded-[2rem] p-7 sm:p-10">
+          <div data-motion="hero-copy" class="hero-copy">
+            <p class="accent-pill px-4 py-2">
+              <span class="lang-es">sistema online // estado: disponible</span>
+              <span class="lang-en">system online // status: available</span>
+            </p>
+
+            <h1 data-motion="hero-title" class="display-title name-lockup mt-8 text-balance text-5xl font-semibold uppercase leading-[0.92] sm:text-7xl lg:text-[5.2rem]">
+              <span class="block text-[color:var(--color-text-strong)]">Juan Pablo</span>
+              <span class="hero-accent block">Pinilla</span>
+            </h1>
+
+            <p class="mt-6 max-w-2xl text-base leading-8 text-[color:var(--color-text-soft)] sm:text-lg">
+              <span class="lang-es">{professionalSummary}</span>
+              <span class="lang-en">{professionalSummaryEn}</span>
+            </p>
+
+            <div class="chip-list mt-6">
+              <span class="chip-item">
+                <span class="lang-es">{siteConfig.roleEs}</span>
+                <span class="lang-en">{siteConfig.roleEn}</span>
+              </span>
+              <span class="chip-item">
+                <span class="lang-es">{siteConfig.location}</span>
+                <span class="lang-en">{siteConfig.locationEn}</span>
+              </span>
             </div>
 
-            <aside data-motion-stagger class="hero-aside">
+            <div data-motion-stagger class="hero-actions mt-8">
+              <a data-motion-hover href="/projects" class="btn-primary">
+                <span class="lang-es">Explorar trabajo</span>
+                <span class="lang-en">Explore work</span>
+              </a>
+              <a data-motion-hover href={siteConfig.linkedin} target="_blank" rel="noreferrer" class="btn-secondary">
+                LinkedIn
+              </a>
+              <a data-motion-hover href="/contact" class="btn-secondary">
+                <span class="lang-es">Iniciar contacto</span>
+                <span class="lang-en">Start contact</span>
+              </a>
+            </div>
+          </div>
+
+          <aside class="hero-media">
+            <figure data-motion="hero-media" class="hero-photo panel rounded-[1.8rem] p-4">
+              <div class="hero-photo__frame">
+                <img
+                  src={siteConfig.profileImage}
+                  alt={siteConfig.profileImageAlt}
+                  loading="eager"
+                  class="hero-photo__image"
+                />
+                <div class="hero-photo__wash"></div>
+              </div>
+
+              <figcaption class="hero-photo__caption">
+                <div>
+                  <p class="eyebrow">profile portrait</p>
+                  <p class="mt-3 text-lg font-semibold text-[color:var(--color-text-strong)]">Juan Pablo Pinilla</p>
+                </div>
+                <p class="hero-photo__caption-copy">
+                  <span class="lang-es">Desarrollo software util, ordenado y listo para operar en contextos reales.</span>
+                  <span class="lang-en">I build useful, structured software that is ready for real operational contexts.</span>
+                </p>
+              </figcaption>
+            </figure>
+
+            <div class="hero-side-grid">
               <article data-motion-reveal class="console-card panel rounded-[1.75rem] p-5">
                 <div class="mb-5 flex items-center gap-2">
                   <span class="h-2.5 w-2.5 rounded-full bg-rose-300/80"></span>
@@ -140,14 +167,14 @@ const operatingModes = [
                 </p>
                 <div class="mt-5 space-y-3 font-mono text-sm text-[color:var(--color-text-soft)]">
                   <p><span class="text-[color:var(--color-accent)]">const engineer</span> = {'{'}</p>
-                  <p class="pl-4">name: <span class="text-white">"Juan Pablo Pinilla"</span>,</p>
-                  <p class="pl-4">focus: <span class="text-white">"Product + Systems"</span>,</p>
-                  <p class="pl-4">stack: <span class="text-white">["Python", "C#", "JavaScript", "SQL"]</span>,</p>
-                  <p class="pl-4">mode: <span class="text-white">"Build / Refine / Ship"</span></p>
+                  <p class="pl-4">name: <span class="text-[color:var(--color-text-strong)]">"Juan Pablo Pinilla"</span>,</p>
+                  <p class="pl-4">focus: <span class="text-[color:var(--color-text-strong)]">"Product + Systems"</span>,</p>
+                  <p class="pl-4">stack: <span class="text-[color:var(--color-text-strong)]">["C#", "JavaScript", "SQL"]</span>,</p>
+                  <p class="pl-4">mode: <span class="text-[color:var(--color-text-strong)]">"Build / Refine / Ship"</span></p>
                   <p>{'}'}</p>
                 </div>
                 <div class="mt-6">
-                  <div class="h-1.5 rounded-full bg-white/6">
+                  <div class="h-1.5 rounded-full bg-[color:var(--color-control-hover)]">
                     <div class="h-1.5 w-[84%] rounded-full bg-gradient-to-r from-[color:var(--color-accent)] to-[color:var(--color-highlight)]"></div>
                   </div>
                   <p class="mt-3 text-xs uppercase tracking-[0.22em] text-[color:var(--color-text-soft)]">
@@ -158,8 +185,8 @@ const operatingModes = [
               </article>
 
               <article data-motion-reveal class="panel rounded-[1.75rem] p-5">
-                <p class="eyebrow">signal_trace</p>
-                <p class="mt-3 text-xl font-semibold text-[color:var(--color-text)]">
+                <p class="eyebrow">signal trace</p>
+                <p class="mt-3 text-xl font-semibold text-[color:var(--color-text-strong)]">
                   <span class="lang-es">Ingenieria orientada a sistemas legibles, utiles y mantenibles.</span>
                   <span class="lang-en">Engineering focused on readable, useful, and maintainable systems.</span>
                 </p>
@@ -168,12 +195,8 @@ const operatingModes = [
                   <span class="lang-en">I combine backend, databases, and frontend to build software that truly supports operations, teams, and decisions.</span>
                 </p>
               </article>
-            </aside>
-          </div>
-
-          <div class="hero-code absolute bottom-7 right-8 hidden font-mono text-[4rem] font-bold uppercase tracking-[-0.08em] text-white/6 lg:block">
-            0X86F5FF
-          </div>
+            </div>
+          </aside>
         </div>
       </div>
     </div>
@@ -183,8 +206,8 @@ const operatingModes = [
     <div class="container-shell">
       <div class="section-header">
         <div>
-          <p class="eyebrow">core_competencies</p>
-          <h2 class="display-title mt-3 text-4xl font-semibold uppercase sm:text-5xl">Engineering_Stack</h2>
+          <p class="eyebrow">core competencies</p>
+          <h2 class="display-title mt-3 text-4xl font-semibold uppercase sm:text-5xl">Engineering Stack</h2>
         </div>
         <p class="max-w-2xl text-sm leading-7 text-[color:var(--color-text-soft)] sm:text-base">
           <span class="lang-es">Un stack enfocado en resolver operaciones reales: automatizacion, modelado de datos, interfaces funcionales y colaboracion tecnica ordenada.</span>
@@ -196,7 +219,7 @@ const operatingModes = [
         {stackGrid.map((item) => (
           <article data-motion-reveal data-motion-hover class="stack-card panel rounded-[1.5rem] p-5">
             <span class="stack-card__icon">&lt;/&gt;</span>
-            <h3 class="mt-6 text-lg font-semibold uppercase tracking-[0.18em] text-[color:var(--color-text)]">{item.label}</h3>
+            <h3 class="mt-6 text-lg font-semibold uppercase tracking-[0.18em] text-[color:var(--color-text-strong)]">{item.label}</h3>
             <p class="mt-3 text-sm leading-7 text-[color:var(--color-text-soft)]">
               <span class="lang-es">{item.detailEs}</span>
               <span class="lang-en">{item.detailEn}</span>
@@ -211,8 +234,8 @@ const operatingModes = [
     <div class="container-shell">
       <div class="section-header">
         <div>
-          <p class="eyebrow">deployed_solutions</p>
-          <h2 class="display-title mt-3 text-4xl font-semibold uppercase sm:text-5xl">Selected_Projects</h2>
+          <p class="eyebrow">deployed solutions</p>
+          <h2 class="display-title mt-3 text-4xl font-semibold uppercase sm:text-5xl">Selected Projects</h2>
         </div>
         <p class="max-w-2xl text-sm leading-7 text-[color:var(--color-text-soft)] sm:text-base">
           <span class="lang-es">Proyectos donde participe en modelado, logica, integracion y estructura operativa para problemas concretos.</span>
@@ -229,7 +252,7 @@ const operatingModes = [
                   src={project.data.cover}
                   alt={`${project.data.title} concept art`}
                   loading="lazy"
-                  class="h-full w-full object-cover opacity-80 grayscale transition duration-500 group-hover:scale-[1.02]"
+                  class="h-full w-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.02]"
                 />
               )}
               <div class="project-card__overlay"></div>
@@ -239,7 +262,7 @@ const operatingModes = [
               <div class="flex items-center justify-between gap-4">
                 <div class="flex flex-wrap gap-2">
                   {project.data.technologies.slice(0, 3).map((tech) => (
-                    <span class="rounded-full border border-cyan-300/16 bg-cyan-300/8 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-accent)]">{tech}</span>
+                    <span class="rounded-full border border-[color:var(--color-tag-border)] bg-[color:var(--color-tag-bg)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-accent)]">{tech}</span>
                   ))}
                 </div>
                 <span class="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-text-soft)]">
@@ -247,7 +270,7 @@ const operatingModes = [
                 </span>
               </div>
 
-              <h3 class="mt-5 text-2xl font-semibold uppercase tracking-tight text-[color:var(--color-text)] sm:text-3xl">
+              <h3 class="mt-5 text-2xl font-semibold uppercase tracking-tight text-[color:var(--color-text-strong)] sm:text-3xl">
                 <span class="lang-es">{project.data.title}</span>
                 <span class="lang-en">{project.data.titleEn ?? project.data.title}</span>
               </h3>
@@ -257,10 +280,10 @@ const operatingModes = [
                 <span class="lang-en">{project.data.summaryEn ?? project.data.summary}</span>
               </p>
 
-              <div class="mt-5 rounded-[1.2rem] border border-[color:var(--color-border)] bg-black/16 p-4">
+              <div class="project-log mt-5 rounded-[1.2rem] border border-[color:var(--color-border)] p-4">
                 <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-accent)]">
-                  <span class="lang-es">registro_operativo_{index + 1}</span>
-                  <span class="lang-en">operation_log_{index + 1}</span>
+                  <span class="lang-es">registro operativo {index + 1}</span>
+                  <span class="lang-en">operation log {index + 1}</span>
                 </p>
                 <p class="mt-3 text-sm leading-7 text-[color:var(--color-text-soft)]">
                   <span class="lang-es">{project.data.result}</span>
@@ -270,11 +293,11 @@ const operatingModes = [
 
               <div class="mt-6 flex flex-wrap gap-3">
                 {project.data.repoUrl && (
-                  <a href={project.data.repoUrl} target="_blank" rel="noreferrer" class="rounded-full border border-[color:var(--color-border)] px-4 py-2 text-sm font-semibold uppercase tracking-[0.16em] text-[color:var(--color-text)] transition hover:border-cyan-300/45 hover:text-[color:var(--color-accent)]">
+                  <a href={project.data.repoUrl} target="_blank" rel="noreferrer" class="btn-secondary">
                     GitHub
                   </a>
                 )}
-                <a href="/projects" class="rounded-full bg-white/4 px-4 py-2 text-sm font-semibold uppercase tracking-[0.16em] text-[color:var(--color-text)] transition hover:bg-cyan-300/10 hover:text-[color:var(--color-accent)]">
+                <a href="/projects" class="btn-secondary">
                   <span class="lang-es">Ver detalle</span>
                   <span class="lang-en">View detail</span>
                 </a>
@@ -306,8 +329,8 @@ const operatingModes = [
     <div class="container-shell">
       <div class="section-header">
         <div>
-          <p class="eyebrow">build_protocol</p>
-          <h2 class="display-title mt-3 text-4xl font-semibold uppercase sm:text-5xl">How_I_Work</h2>
+          <p class="eyebrow">build protocol</p>
+          <h2 class="display-title mt-3 text-4xl font-semibold uppercase sm:text-5xl">How I Work</h2>
         </div>
         <p class="max-w-2xl text-sm leading-7 text-[color:var(--color-text-soft)] sm:text-base">
           <span class="lang-es">Mi forma de trabajo prioriza estructura, comunicacion y trazabilidad para que las soluciones no solo funcionen, sino que se puedan operar y mejorar.</span>
@@ -318,10 +341,10 @@ const operatingModes = [
       <div data-motion-stagger class="mt-8 grid gap-5 lg:grid-cols-3">
         {operatingModes.map((mode) => (
           <article data-motion-reveal data-motion-hover class="panel rounded-[1.6rem] p-6">
-            <span class="inline-flex rounded-full border border-cyan-300/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--color-accent)]">
+            <span class="inline-flex rounded-full border border-[color:var(--color-tag-border)] bg-[color:var(--color-tag-bg)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--color-accent)]">
               {mode.id}
             </span>
-            <h3 class="mt-5 text-2xl font-semibold text-[color:var(--color-text)]">
+            <h3 class="mt-5 text-2xl font-semibold text-[color:var(--color-text-strong)]">
               <span class="lang-es">{mode.titleEs}</span>
               <span class="lang-en">{mode.titleEn}</span>
             </h3>
@@ -338,7 +361,7 @@ const operatingModes = [
   <section class="py-14 sm:py-20">
     <div class="container-shell">
       <div data-motion-reveal class="cta-shell panel cut-corner rounded-[2.2rem] px-6 py-14 text-center sm:px-10">
-        <p class="eyebrow justify-center">ready_to_build</p>
+        <p class="eyebrow justify-center">ready to build</p>
         <h2 class="display-title mx-auto mt-5 max-w-4xl text-balance text-4xl font-semibold uppercase leading-[0.95] sm:text-6xl">
           <span class="lang-es">Listo para construir productos y sistemas con criterio tecnico.</span>
           <span class="lang-en">Ready to build products and systems with strong technical judgment.</span>
@@ -348,11 +371,11 @@ const operatingModes = [
           <span class="lang-en">Available to collaborate on software challenges, internal operations, web platforms, or solutions that need order, maintainability, and real execution.</span>
         </p>
         <div data-motion-stagger class="mt-8 flex flex-wrap justify-center gap-3">
-          <a data-motion-hover href="/contact" class="rounded-full bg-[color:var(--color-accent)] px-6 py-3 text-sm font-bold uppercase tracking-[0.22em] text-slate-950 transition hover:bg-[color:var(--color-highlight)]">
+          <a data-motion-hover href="/contact" class="btn-primary">
             <span class="lang-es">Inicializar contacto</span>
             <span class="lang-en">Initialize contact</span>
           </a>
-          <a data-motion-hover href={siteConfig.github} target="_blank" rel="noreferrer" class="rounded-full border border-[color:var(--color-border)] px-6 py-3 text-sm font-bold uppercase tracking-[0.22em] text-[color:var(--color-text)] transition hover:border-cyan-300/45 hover:text-[color:var(--color-accent)]">
+          <a data-motion-hover href={siteConfig.github} target="_blank" rel="noreferrer" class="btn-secondary">
             GitHub
           </a>
         </div>
@@ -371,31 +394,36 @@ const operatingModes = [
     position: absolute;
     inset: 2.5rem 0 auto;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(134, 245, 255, 0.22), transparent);
+    background: linear-gradient(90deg, transparent, var(--color-border-strong), transparent);
   }
 
-  .hero-copy {
+  .hero-grid {
     position: relative;
     overflow: hidden;
-    min-height: min(48rem, 80vh);
+    display: grid;
+    gap: 2rem;
+    min-height: min(54rem, 88vh);
   }
 
-  .hero-copy::before {
+  .hero-grid::before {
     content: '';
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(circle at 18% 18%, rgba(134, 245, 255, 0.14), transparent 26%),
-      radial-gradient(circle at 82% 24%, rgba(79, 199, 255, 0.12), transparent 20%),
-      linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.02));
+      radial-gradient(circle at 18% 18%, var(--color-radial-1), transparent 26%),
+      radial-gradient(circle at 82% 24%, var(--color-radial-2), transparent 20%),
+      linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.03));
     pointer-events: none;
   }
 
-  .hero-copy__grid {
+  .hero-copy,
+  .hero-media {
     position: relative;
     z-index: 1;
-    display: grid;
-    gap: 2rem;
+  }
+
+  .hero-copy {
+    align-self: center;
   }
 
   .hero-accent {
@@ -403,13 +431,64 @@ const operatingModes = [
     background: linear-gradient(180deg, var(--color-accent), var(--color-accent-soft));
     -webkit-background-clip: text;
     background-clip: text;
-    text-shadow: 0 0 28px rgba(134, 245, 255, 0.18);
+    text-shadow: 0 0 28px color-mix(in srgb, var(--color-accent) 18%, transparent);
   }
 
-  .hero-aside {
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+  }
+
+  .hero-media,
+  .hero-side-grid {
     display: grid;
     gap: 1rem;
-    align-content: start;
+  }
+
+  .hero-photo {
+    overflow: hidden;
+  }
+
+  .hero-photo__frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.4rem;
+    border: 1px solid var(--color-border);
+    background:
+      radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--color-accent) 16%, transparent), transparent 22%),
+      linear-gradient(180deg, var(--color-surface-strong), var(--color-surface-muted));
+    aspect-ratio: 0.82;
+  }
+
+  .hero-photo__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 14%;
+    display: block;
+  }
+
+  .hero-photo__wash {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, transparent 55%, color-mix(in srgb, var(--color-bg) 12%, transparent) 100%),
+      radial-gradient(circle at 50% 100%, color-mix(in srgb, var(--color-accent) 14%, transparent), transparent 38%);
+    pointer-events: none;
+  }
+
+  .hero-photo__caption {
+    display: grid;
+    gap: 0.9rem;
+    padding: 1rem 0.35rem 0.1rem;
+  }
+
+  .hero-photo__caption-copy {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--color-text-soft);
   }
 
   .console-card {
@@ -422,7 +501,7 @@ const operatingModes = [
     position: absolute;
     inset: auto 1.5rem 1.5rem;
     height: 1px;
-    background: linear-gradient(90deg, rgba(134, 245, 255, 0.04), rgba(134, 245, 255, 0.6), transparent);
+    background: linear-gradient(90deg, color-mix(in srgb, var(--color-accent) 10%, transparent), var(--color-accent), transparent);
   }
 
   .section-header {
@@ -450,8 +529,8 @@ const operatingModes = [
     width: 3rem;
     height: 3rem;
     border-radius: 1rem;
-    border: 1px solid rgba(134, 245, 255, 0.2);
-    background: rgba(134, 245, 255, 0.08);
+    border: 1px solid var(--color-tag-border);
+    background: var(--color-tag-bg);
     color: var(--color-accent);
     font-family: var(--font-display);
     font-size: 0.95rem;
@@ -468,16 +547,21 @@ const operatingModes = [
     overflow: hidden;
     border-bottom: 1px solid var(--color-border);
     background:
-      radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1), transparent 18%),
-      linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+      radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--color-text-strong) 12%, transparent), transparent 18%),
+      linear-gradient(135deg, color-mix(in srgb, var(--color-accent) 20%, transparent), transparent 40%),
+      linear-gradient(135deg, var(--color-surface-strong), var(--color-surface-muted));
   }
 
   .project-card__overlay {
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(180deg, rgba(6, 9, 15, 0.1), rgba(6, 9, 15, 0.7)),
-      linear-gradient(135deg, rgba(134, 245, 255, 0.1), transparent 38%);
+      linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--color-bg) 36%, transparent) 100%),
+      linear-gradient(135deg, color-mix(in srgb, var(--color-accent) 14%, transparent), transparent 38%);
+  }
+
+  .project-log {
+    background: color-mix(in srgb, var(--color-surface-muted) 82%, transparent);
   }
 
   .metrics-strip {
@@ -499,16 +583,23 @@ const operatingModes = [
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(circle at 50% 0%, rgba(134, 245, 255, 0.18), transparent 30%),
-      linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.02));
+      radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--color-accent) 18%, transparent), transparent 30%),
+      linear-gradient(180deg, transparent, color-mix(in srgb, var(--color-text-strong) 3%, transparent));
     pointer-events: none;
   }
 
-  @media (min-width: 900px) {
-    .hero-copy__grid {
-      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.78fr);
+  @media (min-width: 960px) {
+    .hero-grid {
+      grid-template-columns: minmax(0, 1.06fr) minmax(360px, 0.94fr);
       align-items: center;
-      min-height: 40rem;
+    }
+
+    .hero-media {
+      align-self: stretch;
+    }
+
+    .hero-side-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .section-header {
@@ -526,6 +617,12 @@ const operatingModes = [
 
     .metrics-strip {
       grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 639px) {
+    .hero-actions {
+      flex-direction: column;
     }
   }
 </style>

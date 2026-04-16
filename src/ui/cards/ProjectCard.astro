@@ -71,13 +71,13 @@ const { project } = Astro.props;
 
   <div class="mt-6 flex flex-wrap gap-3 text-sm font-semibold">
     {project.data.liveUrl && (
-      <a href={project.data.liveUrl} target="_blank" rel="noreferrer" class="rounded-full border border-[color:var(--color-border)] px-4 py-2 hover:border-[color:var(--color-accent-soft)] hover:text-[color:var(--color-accent)]">
+      <a href={project.data.liveUrl} target="_blank" rel="noreferrer" class="btn-secondary">
         <span class="lang-es">Demo</span>
         <span class="lang-en">Live Demo</span>
       </a>
     )}
     {project.data.repoUrl && (
-      <a href={project.data.repoUrl} target="_blank" rel="noreferrer" class="rounded-full border border-[color:var(--color-border)] px-4 py-2 hover:border-[color:var(--color-accent-soft)] hover:text-[color:var(--color-accent)]">
+      <a href={project.data.repoUrl} target="_blank" rel="noreferrer" class="btn-secondary">
         <span class="lang-es">Repositorio</span>
         <span class="lang-en">Repository</span>
       </a>

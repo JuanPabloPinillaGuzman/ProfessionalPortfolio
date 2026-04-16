@@ -1,10 +1,13 @@
 ---
 import { siteConfig } from '../../config/site';
 ---
-<footer data-motion-reveal class="mt-10 border-t border-[color:var(--color-border)] bg-[rgba(5,8,14,0.82)]">
+<footer data-motion-reveal class="mt-10 border-t border-[color:var(--color-border)] bg-[color:var(--color-footer-bg)]">
   <div class="container-shell flex flex-col gap-5 py-8 text-sm text-[color:var(--color-text-soft)] sm:flex-row sm:items-center sm:justify-between">
     <div>
-      <p class="font-semibold uppercase tracking-[0.3em] text-[color:var(--color-text)]">Portafolio Profesional</p>
+      <p class="font-semibold uppercase tracking-[0.3em] text-[color:var(--color-text)]">
+        <span class="lang-es">Portafolio Profesional</span>
+        <span class="lang-en">Professional Portfolio</span>
+      </p>
       <p class="mt-2 max-w-xl text-sm">
         <span class="lang-es">© {new Date().getFullYear()} {siteConfig.name}. Portafolio con enfoque en sistemas, producto y ejecucion real.</span>
         <span class="lang-en">© {new Date().getFullYear()} {siteConfig.name}. Portfolio focused on systems, product thinking, and real execution.</span>

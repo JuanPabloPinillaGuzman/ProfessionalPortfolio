@@ -11,7 +11,9 @@ export const siteConfig = {
     'Software developer focused on web development, backend systems, and databases, building functional and well-structured solutions for real user needs.',
   url: 'https://juanpablopinilla.dev',
   github: 'https://github.com/JuanPabloPinillaGuzman',
-  linkedin: 'https://www.linkedin.com/in/juanpablopinilla'
+  linkedin: 'https://www.linkedin.com/in/juan-pablo-pinilla-guzman-bb6b9b225',
+  profileImage: '/images/profile/juan-pablo-pinilla.png',
+  profileImageAlt: 'Professional portrait of Juan Pablo Pinilla'
 } as const;
 
 export const skills = [
@@ -30,10 +32,10 @@ export const skills = [
 ] as const;
 
 export const professionalSummary =
-  'Desarrollador de software con experiencia en proyectos de desarrollo web, backend y bases de datos, enfocado en construir soluciones funcionales, organizadas y orientadas a las necesidades del usuario. Tengo conocimientos en Python, C#, JavaScript, HTML, CSS, PostgreSQL y MySQL, además de experiencia usando GitHub para control de versiones y trabajo colaborativo. Me caracterizo por ser proactivo, responsable, organizado y con alta disposición para aprender, adaptarme a nuevos retos y trabajar en equipo.';
+  'Desarrollador de software con experiencia en proyectos de desarrollo web, backend y bases de datos, enfocado en construir soluciones funcionales, organizadas y orientadas a las necesidades del usuario. Tengo conocimientos en C#(.NET), JavaScript, HTML, CSS, PostgreSQL y MySQL, además de experiencia usando GitHub para control de versiones y trabajo colaborativo. Me caracterizo por ser proactivo, responsable, organizado y con alta disposición para aprender, adaptarme a nuevos retos y trabajar en equipo.';
 
 export const professionalSummaryEn =
-  'Software developer with experience in web, backend, and database projects, focused on building functional, organized solutions aligned with user needs. I work with Python, C#, JavaScript, HTML, CSS, PostgreSQL, and MySQL, and I have practical experience with GitHub for version control and collaborative workflows. I am proactive, responsible, organized, and always ready to learn, adapt to new challenges, and contribute in team environments.';
+  'Software developer with experience in web, backend, and database projects, focused on building functional, organized solutions aligned with user needs. I work with C#(.NET), JavaScript, HTML, CSS, PostgreSQL, and MySQL, and I have practical experience with GitHub for version control and collaborative workflows. I am proactive, responsible, organized, and always ready to learn, adapt to new challenges, and contribute in team environments.';
 
 export const impactHighlights = [
   'Trabajo en equipo y comunicación efectiva en entornos de desarrollo.',
