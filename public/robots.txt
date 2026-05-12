@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://juanpablopinilla.dev/sitemap-index.xml
+Sitemap: https://juanpablopinillaguzman.github.io/ProfessionalPortfolio/sitemap-index.xml

@@ -7,7 +7,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://juanpablopinilla.dev',
+  site: 'https://juanpablopinillaguzman.github.io',
+  base: '/ProfessionalPortfolio',
   integrations: [sitemap()],
 
   vite: {

@@ -1,3 +1,5 @@
+import { toAbsoluteUrl } from './paths';
+
 export const siteConfig = {
   name: 'Juan Pablo Pinilla',
   shortName: 'Juan Pablo',
@@ -9,7 +11,7 @@ export const siteConfig = {
     'Desarrollador de software con enfoque en desarrollo web, backend y bases de datos, orientado a construir soluciones funcionales y organizadas para necesidades reales.',
   descriptionEn:
     'Software developer focused on web development, backend systems, and databases, building functional and well-structured solutions for real user needs.',
-  url: 'https://juanpablopinilla.dev',
+  url: toAbsoluteUrl('/'),
   github: 'https://github.com/JuanPabloPinillaGuzman',
   linkedin: 'https://www.linkedin.com/in/juan-pablo-pinilla-guzman-bb6b9b225',
   profileImage: '/images/profile/juan-pablo-pinilla.png',

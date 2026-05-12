@@ -1,11 +1,13 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { withBase } from '../../config/paths';
 
 interface Props {
   project: CollectionEntry<'projects'>;
 }
 
 const { project } = Astro.props;
+const cover = project.data.cover ? withBase(project.data.cover) : undefined;
 ---
 <article data-motion-reveal data-motion-hover class="group panel panel-hover relative overflow-hidden rounded-3xl p-6">
   <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[color:var(--color-accent)] via-[color:var(--color-accent-soft)] to-[color:var(--color-highlight)]"></div>
@@ -13,7 +15,7 @@ const { project } = Astro.props;
   {project.data.cover && (
     <div class="mb-5 overflow-hidden rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)]">
       <img
-        src={project.data.cover}
+        src={cover}
         alt={`${project.data.title} visual concept`}
         loading="lazy"
         class="h-40 w-full object-cover transition duration-500 group-hover:scale-[1.02]"

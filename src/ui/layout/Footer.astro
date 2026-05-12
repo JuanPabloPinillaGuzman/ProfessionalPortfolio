@@ -1,5 +1,6 @@
 ---
 import { siteConfig } from '../../config/site';
+import { withBase } from '../../config/paths';
 ---
 <footer data-motion-reveal class="mt-10 border-t border-[color:var(--color-border)] bg-[color:var(--color-footer-bg)]">
   <div class="container-shell flex flex-col gap-5 py-8 text-sm text-[color:var(--color-text-soft)] sm:flex-row sm:items-center sm:justify-between">
@@ -16,7 +17,7 @@ import { siteConfig } from '../../config/site';
     <div class="flex flex-wrap items-center gap-5 text-xs font-semibold uppercase tracking-[0.22em]">
       <a href={siteConfig.github} target="_blank" rel="noreferrer" class="transition hover:text-[color:var(--color-accent)]">GitHub</a>
       <a href={siteConfig.linkedin} target="_blank" rel="noreferrer" class="transition hover:text-[color:var(--color-accent)]">LinkedIn</a>
-      <a href="/projects" class="transition hover:text-[color:var(--color-accent)]">
+      <a href={withBase('/projects')} class="transition hover:text-[color:var(--color-accent)]">
         <span class="lang-es">Proyectos</span>
         <span class="lang-en">Projects</span>
       </a>

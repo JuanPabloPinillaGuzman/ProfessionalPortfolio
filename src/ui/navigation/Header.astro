@@ -1,6 +1,7 @@
 ---
 import LanguageToggle from './LanguageToggle.astro';
 import ThemeToggle from './ThemeToggle.astro';
+import { withBase, withoutBase } from '../../config/paths';
 
 const links = [
   { href: '/', labelEs: 'Inicio', labelEn: 'Home' },
@@ -9,12 +10,12 @@ const links = [
   { href: '/contact', labelEs: 'Contacto', labelEn: 'Contact' }
 ];
 
-const currentPath = Astro.url.pathname;
+const currentPath = withoutBase(Astro.url.pathname);
 ---
 <header class="sticky top-0 z-20 border-b border-[color:var(--color-border)] bg-[color:var(--color-header-bg)] backdrop-blur-xl">
   <div class="container-shell">
     <div class="header-shell">
-      <a href="/" class="group header-brand inline-flex items-center rounded-xl text-sm font-semibold text-[color:var(--color-text)]">
+      <a href={withBase('/')} class="group header-brand inline-flex items-center rounded-xl text-sm font-semibold text-[color:var(--color-text)]">
         <span class="brand-mark" aria-hidden="true">
           <span class="brand-mark__j">J</span>
           <span class="brand-mark__p">P</span>
@@ -33,7 +34,7 @@ const currentPath = Astro.url.pathname;
 
           return (
             <a
-              href={link.href}
+              href={withBase(link.href)}
               class:list={[
                 'nav-pill',
                 isActive && 'nav-pill--active'
@@ -49,7 +50,7 @@ const currentPath = Astro.url.pathname;
       <div class="header-actions">
         <ThemeToggle />
         <LanguageToggle />
-        <a href="/contact" class="btn-secondary header-cta">
+        <a href={withBase('/contact')} class="btn-secondary header-cta">
           <span class="lang-es">Contacto</span>
           <span class="lang-en">Contact</span>
         </a>

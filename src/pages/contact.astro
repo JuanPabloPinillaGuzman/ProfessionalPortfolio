@@ -16,7 +16,7 @@ import { siteConfig } from '../config/site';
     className=""
   >
     <div class="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-      <form id="contact-form" data-motion-reveal class="panel cut-corner rounded-3xl p-6" aria-label="Contact form">
+      <form id="contact-form" data-contact-url={siteConfig.linkedin} data-motion-reveal class="panel cut-corner rounded-3xl p-6" aria-label="Contact form">
         <label for="contact-name" class="mb-2 block text-sm font-semibold text-[color:var(--color-text)]">
           <span class="lang-es">Nombre</span>
           <span class="lang-en">Name</span>
@@ -36,13 +36,14 @@ import { siteConfig } from '../config/site';
         <textarea id="contact-message" name="message" rows="6" required class="mb-4 w-full rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-3 text-[color:var(--color-text)]"></textarea>
 
         <button data-motion-hover type="submit" class="btn-primary">
-          <span class="lang-es">Redactar correo</span>
-          <span class="lang-en">Compose email</span>
+          <span class="lang-es">Preparar mensaje</span>
+          <span class="lang-en">Prepare message</span>
         </button>
         <p class="mt-3 text-sm text-[color:var(--color-text-soft)]">
-          <span class="lang-es">Este formulario abre tu app de correo local y evita publicar una direccion de correo en texto plano.</span>
-          <span class="lang-en">This form opens your local email app and avoids publishing a plain-text email address on the page.</span>
+          <span class="lang-es">El mensaje se copia al portapapeles y se abre LinkedIn para continuar la conversacion.</span>
+          <span class="lang-en">The message is copied to your clipboard and LinkedIn opens to continue the conversation.</span>
         </p>
+        <p id="contact-status" class="mt-3 text-sm font-semibold text-[color:var(--color-accent)]" aria-live="polite"></p>
       </form>
 
       <aside data-motion-reveal data-motion-hover class="panel panel-hover space-y-4 rounded-3xl p-6">
@@ -82,21 +83,36 @@ import { siteConfig } from '../config/site';
     if (!(company instanceof HTMLInputElement)) return;
     if (!(message instanceof HTMLTextAreaElement)) return;
 
-    const mailbox = ['contact', 'juanpablopinilla.dev'];
+    const contactUrl = target.dataset.contactUrl;
     const lang = document.documentElement.dataset.lang === 'en' ? 'en' : 'es';
-    const subjectPrefix = lang === 'en' ? 'Portfolio inquiry from' : 'Consulta de portafolio de';
     const labelName = lang === 'en' ? 'Name' : 'Nombre';
     const labelCompany = lang === 'en' ? 'Company' : 'Empresa';
     const emptyCompany = lang === 'en' ? 'N/A' : 'No aplica';
+    const status = document.querySelector('#contact-status');
 
-    const subject = encodeURIComponent(`${subjectPrefix} ${name.value.trim() || 'recruiter'}`);
-    const body = encodeURIComponent([
+    const body = [
       `${labelName}: ${name.value.trim()}`,
       `${labelCompany}: ${company.value.trim() || emptyCompany}`,
       '',
       message.value.trim()
-    ].join('\n'));
+    ].join('\n');
 
-    window.location.href = `mailto:${mailbox[0]}@${mailbox[1]}?subject=${subject}&body=${body}`;
+    navigator.clipboard?.writeText(body).then(() => {
+      if (status) {
+        status.textContent = lang === 'en'
+          ? 'Message copied. LinkedIn is opening.'
+          : 'Mensaje copiado. Se esta abriendo LinkedIn.';
+      }
+    }).catch(() => {
+      if (status) {
+        status.textContent = lang === 'en'
+          ? 'LinkedIn is opening. Copy your message before leaving if needed.'
+          : 'Se esta abriendo LinkedIn. Copia tu mensaje antes de salir si lo necesitas.';
+      }
+    });
+
+    if (contactUrl) {
+      window.open(contactUrl, '_blank', 'noopener,noreferrer');
+    }
   });
 </script>

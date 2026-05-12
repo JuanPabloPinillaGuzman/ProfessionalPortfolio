@@ -18,6 +18,6 @@ cover: "/visuals/project-astro.svg"
 featured: true
 year: 2026
 repoUrl: "https://github.com/JuanPabloPinillaGuzman/ProfessionalPortfolio"
-liveUrl: "https://juanpablopinilla.dev"
+liveUrl: "https://juanpablopinillaguzman.github.io/ProfessionalPortfolio/"
 ---
 Este proyecto refleja mi capacidad para convertir experiencia técnica en una presentación clara, mantenible y orientada a producto.
