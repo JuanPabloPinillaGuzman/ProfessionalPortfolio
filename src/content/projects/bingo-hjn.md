@@ -14,7 +14,7 @@ technologies:
   - LocalStorage
 result: "La aplicación permite operar partidas desde navegador con una experiencia ligera, responsive y persistente para no perder progreso entre sesiones."
 resultEn: "The application enables browser-based bingo sessions with a lightweight, responsive, and persistent experience so progress is not lost between sessions."
-cover: "/visuals/project-dashboard.svg"
+cover: "/visuals/hero-lab.svg"
 featured: false
 year: 2025
 repoUrl: "https://github.com/JuanPabloPinillaGuzman/BingoHJN"

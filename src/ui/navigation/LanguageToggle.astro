@@ -35,14 +35,16 @@
     });
   };
 
-  const initial = localStorage.getItem(LANG_KEY) ?? 'en';
-  applyLanguage(initial);
+  // MainLayout already applied any saved language before paint; this only syncs the buttons.
+  applyLanguage(document.documentElement.dataset.lang);
 
   document.querySelectorAll('[data-lang-btn]').forEach((button) => {
     if (!(button instanceof HTMLButtonElement)) return;
     button.addEventListener('click', () => {
       const selected = button.dataset.langBtn === 'en' ? 'en' : 'es';
-      localStorage.setItem(LANG_KEY, selected);
+      try {
+        localStorage.setItem(LANG_KEY, selected);
+      } catch {}
       applyLanguage(selected);
     });
   });

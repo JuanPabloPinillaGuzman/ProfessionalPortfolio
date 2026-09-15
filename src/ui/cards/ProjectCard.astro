@@ -9,7 +9,7 @@ interface Props {
 const { project } = Astro.props;
 const cover = project.data.cover ? withBase(project.data.cover) : undefined;
 ---
-<article data-motion-reveal data-motion-hover class="group panel panel-hover relative overflow-hidden rounded-3xl p-6">
+<article id={project.id} data-motion-reveal data-motion-hover class="group panel panel-hover relative scroll-mt-28 overflow-hidden rounded-3xl p-6">
   <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[color:var(--color-accent)] via-[color:var(--color-accent-soft)] to-[color:var(--color-highlight)]"></div>
   <div class="absolute -right-7 -top-7 h-16 w-16 rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)]/80"></div>
   {project.data.cover && (
@@ -45,7 +45,7 @@ const cover = project.data.cover ? withBase(project.data.cover) : undefined;
     </div>
     <div>
       <dt class="font-bold text-[color:var(--color-text)]">
-        <span class="lang-es">Solucion</span>
+        <span class="lang-es">Solución</span>
         <span class="lang-en">Solution</span>
       </dt>
       <dd class="text-[color:var(--color-text-soft)]">

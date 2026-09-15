@@ -5,7 +5,8 @@ import {
   professionalSummary,
   professionalSummaryEn,
   impactHighlights,
-  impactHighlightsEn
+  impactHighlightsEn,
+  experience
 } from '../config/site';
 import { getCollection } from 'astro:content';
 import { withBase } from '../config/paths';
@@ -16,45 +17,47 @@ const featuredProjects = (await getCollection('projects'))
   .slice(0, 2);
 
 const profileImage = withBase(siteConfig.profileImage);
+const cvFile = withBase(siteConfig.cvFile);
+const projectCount = (await getCollection('projects')).length;
 
 const stackGrid = [
   {
-    label: 'PYTHON',
-    detailEs: 'Automatizacion, logica de negocio y servicios backend.',
-    detailEn: 'Automation, business logic, and backend services.'
-  },
-  {
     label: 'C# / .NET',
-    detailEs: 'Sistemas transaccionales y reglas operativas.',
-    detailEn: 'Transactional systems and operational rules.'
+    detailEs: 'APIs y lógica de negocio con ASP.NET, Dapper y Entity Framework.',
+    detailEn: 'APIs and business logic with ASP.NET, Dapper, and Entity Framework.'
   },
   {
-    label: 'JAVASCRIPT',
-    detailEs: 'Interfaces web con foco en claridad y mantenimiento.',
-    detailEn: 'Web interfaces focused on clarity and maintainability.'
+    label: 'REACT + TYPESCRIPT',
+    detailEs: 'Interfaces con React 19, TypeScript y Vite, con Tailwind CSS v4 y shadcn/ui.',
+    detailEn: 'Interfaces with React 19, TypeScript, and Vite, styled with Tailwind CSS v4 and shadcn/ui.'
   },
   {
     label: 'SQL / DATA',
-    detailEs: 'Modelado relacional, consultas y consistencia de datos.',
-    detailEn: 'Relational modeling, queries, and data consistency.'
+    detailEs: 'Modelado relacional y consultas en PostgreSQL y MySQL.',
+    detailEn: 'Relational modeling and queries on PostgreSQL and MySQL.'
   },
   {
-    label: 'WEB APPS',
-    detailEs: 'Productos conectados a procesos reales y usuarios reales.',
-    detailEn: 'Products connected to real workflows and users.'
+    label: 'AI TOOLS',
+    detailEs: 'Claude, ChatGPT, Codex y Gemini para acelerar el desarrollo y crear soluciones con IA generativa.',
+    detailEn: 'Claude, ChatGPT, Codex, and Gemini to speed up development and build generative AI solutions.'
+  },
+  {
+    label: 'MOBILE',
+    detailEs: 'Aplicaciones Android con Ionic conectadas al mismo sistema.',
+    detailEn: 'Android apps with Ionic connected to the same system.'
   },
   {
     label: 'TEAM FLOW',
-    detailEs: 'GitHub, colaboracion y entrega ordenada.',
-    detailEn: 'GitHub, collaboration, and organized delivery.'
+    detailEs: 'Git, GitHub, colaboración y entrega ordenada.',
+    detailEn: 'Git, GitHub, collaboration, and organized delivery.'
   }
 ] as const;
 
 const proofMetrics = [
-  { value: '02', labelEs: 'proyectos destacados', labelEn: 'featured systems' },
-  { value: '06', labelEs: 'capacidades nucleares', labelEn: 'core capabilities' },
-  { value: '100%', labelEs: 'enfoque practico', labelEn: 'practical mindset' },
-  { value: '24/7', labelEs: 'mentalidad de soporte', labelEn: 'support mindset' }
+  { value: '1', labelEs: 'año de experiencia profesional', labelEn: 'year of professional experience' },
+  { value: '3', labelEs: 'capas: API, web y móvil', labelEn: 'layers: API, web, and mobile' },
+  { value: String(projectCount).padStart(2, '0'), labelEs: 'proyectos publicados', labelEn: 'published projects' },
+  { value: 'B1', labelEs: 'nivel de inglés', labelEn: 'English level' }
 ] as const;
 
 const operatingModes = [
@@ -67,14 +70,14 @@ const operatingModes = [
   },
   {
     id: '02',
-    titleEs: 'Colaboracion estable',
+    titleEs: 'Colaboración estable',
     titleEn: 'Stable collaboration',
     copyEs: impactHighlights[0],
     copyEn: impactHighlightsEn[0]
   },
   {
     id: '03',
-    titleEs: 'Ejecucion confiable',
+    titleEs: 'Ejecución confiable',
     titleEn: 'Reliable execution',
     copyEs: impactHighlights[2],
     copyEn: impactHighlightsEn[2]
@@ -83,7 +86,7 @@ const operatingModes = [
 ---
 
 <MainLayout
-  title="Software Developer Portfolio"
+  title="Desarrollador Fullstack"
   description={siteConfig.description}
   canonicalPath="/"
 >
@@ -123,12 +126,16 @@ const operatingModes = [
                 <span class="lang-es">Explorar trabajo</span>
                 <span class="lang-en">Explore work</span>
               </a>
+              <a data-motion-hover href={cvFile} target="_blank" rel="noopener" class="btn-secondary">
+                <span class="lang-es">Descargar CV</span>
+                <span class="lang-en">Download CV</span>
+              </a>
               <a data-motion-hover href={siteConfig.linkedin} target="_blank" rel="noreferrer" class="btn-secondary">
                 LinkedIn
               </a>
               <a data-motion-hover href={withBase('/contact')} class="btn-secondary">
-                <span class="lang-es">Iniciar contacto</span>
-                <span class="lang-en">Start contact</span>
+                <span class="lang-es">Contactar</span>
+                <span class="lang-en">Get in touch</span>
               </a>
             </div>
           </div>
@@ -147,11 +154,14 @@ const operatingModes = [
 
               <figcaption class="hero-photo__caption">
                 <div>
-                  <p class="eyebrow">profile portrait</p>
-                  <p class="mt-3 text-lg font-semibold text-[color:var(--color-text-strong)]">Juan Pablo Pinilla</p>
+                  <p class="eyebrow">
+                    <span class="lang-es">{siteConfig.roleEs}</span>
+                    <span class="lang-en">{siteConfig.roleEn}</span>
+                  </p>
+                  <p class="mt-3 text-lg font-semibold text-[color:var(--color-text-strong)]">{siteConfig.name}</p>
                 </div>
                 <p class="hero-photo__caption-copy">
-                  <span class="lang-es">Desarrollo software util, ordenado y listo para operar en contextos reales.</span>
+                  <span class="lang-es">Desarrollo software útil, ordenado y listo para operar en contextos reales.</span>
                   <span class="lang-en">I build useful, structured software that is ready for real operational contexts.</span>
                 </p>
               </figcaption>
@@ -171,8 +181,8 @@ const operatingModes = [
                 <div class="mt-5 space-y-3 font-mono text-sm text-[color:var(--color-text-soft)]">
                   <p><span class="text-[color:var(--color-accent)]">const engineer</span> = {'{'}</p>
                   <p class="pl-4">name: <span class="text-[color:var(--color-text-strong)]">"Juan Pablo Pinilla"</span>,</p>
-                  <p class="pl-4">focus: <span class="text-[color:var(--color-text-strong)]">"Product + Systems"</span>,</p>
-                  <p class="pl-4">stack: <span class="text-[color:var(--color-text-strong)]">["C#", "JavaScript", "SQL"]</span>,</p>
+                  <p class="pl-4">focus: <span class="text-[color:var(--color-text-strong)]">"API + Web + Mobile"</span>,</p>
+                  <p class="pl-4">stack: <span class="text-[color:var(--color-text-strong)]">["C#", "React", "TypeScript", "PostgreSQL"]</span>,</p>
                   <p class="pl-4">mode: <span class="text-[color:var(--color-text-strong)]">"Build / Refine / Ship"</span></p>
                   <p>{'}'}</p>
                 </div>
@@ -181,7 +191,7 @@ const operatingModes = [
                     <div class="h-1.5 w-[84%] rounded-full bg-gradient-to-r from-[color:var(--color-accent)] to-[color:var(--color-highlight)]"></div>
                   </div>
                   <p class="mt-3 text-xs uppercase tracking-[0.22em] text-[color:var(--color-text-soft)]">
-                    <span class="lang-es">cargando modulo visual...</span>
+                    <span class="lang-es">cargando módulo visual...</span>
                     <span class="lang-en">loading visual module...</span>
                   </p>
                 </div>
@@ -190,7 +200,7 @@ const operatingModes = [
               <article data-motion-reveal class="panel rounded-[1.75rem] p-5">
                 <p class="eyebrow">signal trace</p>
                 <p class="mt-3 text-xl font-semibold text-[color:var(--color-text-strong)]">
-                  <span class="lang-es">Ingenieria orientada a sistemas legibles, utiles y mantenibles.</span>
+                  <span class="lang-es">Ingeniería orientada a sistemas legibles, útiles y mantenibles.</span>
                   <span class="lang-en">Engineering focused on readable, useful, and maintainable systems.</span>
                 </p>
                 <p class="mt-4 text-sm leading-7 text-[color:var(--color-text-soft)]">
@@ -209,12 +219,85 @@ const operatingModes = [
     <div class="container-shell">
       <div class="section-header">
         <div>
-          <p class="eyebrow">core competencies</p>
-          <h2 class="display-title mt-3 text-4xl font-semibold uppercase sm:text-5xl">Engineering Stack</h2>
+          <p class="eyebrow">
+            <span class="lang-es">trayectoria</span>
+            <span class="lang-en">track record</span>
+          </p>
+          <h2 class="display-title mt-3 text-4xl font-semibold uppercase sm:text-5xl">
+            <span class="lang-es">Experiencia</span>
+            <span class="lang-en">Experience</span>
+          </h2>
         </div>
         <p class="max-w-2xl text-sm leading-7 text-[color:var(--color-text-soft)] sm:text-base">
-          <span class="lang-es">Un stack enfocado en resolver operaciones reales: automatizacion, modelado de datos, interfaces funcionales y colaboracion tecnica ordenada.</span>
-          <span class="lang-en">A stack focused on solving real operations: automation, data modeling, functional interfaces, and organized technical collaboration.</span>
+          <span class="lang-es">Sistemas construidos de extremo a extremo: API, base de datos, interfaz web y aplicación móvil.</span>
+          <span class="lang-en">Systems built end to end: API, database, web interface, and mobile app.</span>
+        </p>
+      </div>
+
+      <div data-motion-stagger class="mt-8 grid gap-5">
+        {experience.map((job) => (
+          <article data-motion-reveal class="panel cut-corner rounded-[1.8rem] p-6 sm:p-8">
+            <div class="flex flex-wrap items-start justify-between gap-4">
+              <div>
+                <h3 class="text-2xl font-semibold text-[color:var(--color-text-strong)] sm:text-3xl">
+                  <span class="lang-es">{job.roleEs}</span>
+                  <span class="lang-en">{job.roleEn}</span>
+                </h3>
+                <p class="mt-2 text-sm font-semibold uppercase tracking-[0.2em] text-[color:var(--color-accent)]">{job.company}</p>
+              </div>
+              <span class="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-text-soft)]">
+                <span class="lang-es">{job.periodEs}</span>
+                <span class="lang-en">{job.periodEn}</span>
+              </span>
+            </div>
+
+            <p class="mt-5 text-base italic text-[color:var(--color-text-soft)]">
+              <span class="lang-es">{job.projectEs}</span>
+              <span class="lang-en">{job.projectEn}</span>
+            </p>
+
+            <div class="mt-6 grid gap-4 lg:grid-cols-3">
+              {job.highlights.map((item) => (
+                <div class="project-log rounded-[1.2rem] border border-[color:var(--color-border)] p-4">
+                  <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-accent)]">
+                    <span class="lang-es">{item.labelEs}</span>
+                    <span class="lang-en">{item.labelEn}</span>
+                  </p>
+                  <p class="mt-3 text-sm leading-7 text-[color:var(--color-text-soft)]">
+                    <span class="lang-es">{item.copyEs}</span>
+                    <span class="lang-en">{item.copyEn}</span>
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <ul class="mt-6 flex flex-wrap gap-2">
+              {job.technologies.map((tech) => (
+                <li class="rounded-full border border-[color:var(--color-tag-border)] bg-[color:var(--color-tag-bg)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-accent)]">{tech}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-14 sm:py-18">
+    <div class="container-shell">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">
+            <span class="lang-es">competencias técnicas</span>
+            <span class="lang-en">core competencies</span>
+          </p>
+          <h2 class="display-title mt-3 text-4xl font-semibold uppercase sm:text-5xl">
+            <span class="lang-es">Stack técnico</span>
+            <span class="lang-en">Engineering Stack</span>
+          </h2>
+        </div>
+        <p class="max-w-2xl text-sm leading-7 text-[color:var(--color-text-soft)] sm:text-base">
+          <span class="lang-es">Un stack enfocado en resolver operaciones reales: APIs, modelado de datos, interfaces funcionales, apps móviles y herramientas de IA integradas al flujo de trabajo.</span>
+          <span class="lang-en">A stack focused on solving real operations: APIs, data modeling, functional interfaces, mobile apps, and AI tools built into the workflow.</span>
         </p>
       </div>
 
@@ -237,11 +320,17 @@ const operatingModes = [
     <div class="container-shell">
       <div class="section-header">
         <div>
-          <p class="eyebrow">deployed solutions</p>
-          <h2 class="display-title mt-3 text-4xl font-semibold uppercase sm:text-5xl">Selected Projects</h2>
+          <p class="eyebrow">
+            <span class="lang-es">soluciones publicadas</span>
+            <span class="lang-en">deployed solutions</span>
+          </p>
+          <h2 class="display-title mt-3 text-4xl font-semibold uppercase sm:text-5xl">
+            <span class="lang-es">Proyectos destacados</span>
+            <span class="lang-en">Selected Projects</span>
+          </h2>
         </div>
         <p class="max-w-2xl text-sm leading-7 text-[color:var(--color-text-soft)] sm:text-base">
-          <span class="lang-es">Proyectos donde participe en modelado, logica, integracion y estructura operativa para problemas concretos.</span>
+          <span class="lang-es">Proyectos donde participé en modelado, lógica, integración y estructura operativa para problemas concretos.</span>
           <span class="lang-en">Projects where I contributed to modeling, logic, integration, and operational structure for concrete problems.</span>
         </p>
       </div>
@@ -300,7 +389,7 @@ const operatingModes = [
                     GitHub
                   </a>
                 )}
-                <a href={withBase('/projects')} class="btn-secondary">
+                <a href={withBase(`/projects#${project.id}`)} class="btn-secondary">
                   <span class="lang-es">Ver detalle</span>
                   <span class="lang-en">View detail</span>
                 </a>
@@ -332,11 +421,17 @@ const operatingModes = [
     <div class="container-shell">
       <div class="section-header">
         <div>
-          <p class="eyebrow">build protocol</p>
-          <h2 class="display-title mt-3 text-4xl font-semibold uppercase sm:text-5xl">How I Work</h2>
+          <p class="eyebrow">
+            <span class="lang-es">forma de trabajo</span>
+            <span class="lang-en">build protocol</span>
+          </p>
+          <h2 class="display-title mt-3 text-4xl font-semibold uppercase sm:text-5xl">
+            <span class="lang-es">Cómo trabajo</span>
+            <span class="lang-en">How I Work</span>
+          </h2>
         </div>
         <p class="max-w-2xl text-sm leading-7 text-[color:var(--color-text-soft)] sm:text-base">
-          <span class="lang-es">Mi forma de trabajo prioriza estructura, comunicacion y trazabilidad para que las soluciones no solo funcionen, sino que se puedan operar y mejorar.</span>
+          <span class="lang-es">Mi forma de trabajo prioriza estructura, comunicación y trazabilidad para que las soluciones no solo funcionen, sino que se puedan operar y mejorar.</span>
           <span class="lang-en">My workflow prioritizes structure, communication, and traceability so solutions not only work, but can be operated and improved.</span>
         </p>
       </div>
@@ -364,19 +459,26 @@ const operatingModes = [
   <section class="py-14 sm:py-20">
     <div class="container-shell">
       <div data-motion-reveal class="cta-shell panel cut-corner rounded-[2.2rem] px-6 py-14 text-center sm:px-10">
-        <p class="eyebrow justify-center">ready to build</p>
+        <p class="eyebrow justify-center">
+          <span class="lang-es">hablemos</span>
+          <span class="lang-en">ready to build</span>
+        </p>
         <h2 class="display-title mx-auto mt-5 max-w-4xl text-balance text-4xl font-semibold uppercase leading-[0.95] sm:text-6xl">
-          <span class="lang-es">Listo para construir productos y sistemas con criterio tecnico.</span>
+          <span class="lang-es">Listo para construir productos y sistemas con criterio técnico.</span>
           <span class="lang-en">Ready to build products and systems with strong technical judgment.</span>
         </h2>
         <p class="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[color:var(--color-text-soft)] sm:text-base">
-          <span class="lang-es">Disponible para colaborar en retos de software, operaciones internas, plataformas web o soluciones que necesiten orden, mantenimiento y ejecucion real.</span>
+          <span class="lang-es">Disponible para colaborar en retos de software, operaciones internas, plataformas web o soluciones que necesiten orden, mantenimiento y ejecución real.</span>
           <span class="lang-en">Available to collaborate on software challenges, internal operations, web platforms, or solutions that need order, maintainability, and real execution.</span>
         </p>
         <div data-motion-stagger class="mt-8 flex flex-wrap justify-center gap-3">
           <a data-motion-hover href={withBase('/contact')} class="btn-primary">
-            <span class="lang-es">Inicializar contacto</span>
-            <span class="lang-en">Initialize contact</span>
+            <span class="lang-es">Contactar</span>
+            <span class="lang-en">Get in touch</span>
+          </a>
+          <a data-motion-hover href={cvFile} target="_blank" rel="noopener" class="btn-secondary">
+            <span class="lang-es">Descargar CV</span>
+            <span class="lang-en">Download CV</span>
           </a>
           <a data-motion-hover href={siteConfig.github} target="_blank" rel="noreferrer" class="btn-secondary">
             GitHub

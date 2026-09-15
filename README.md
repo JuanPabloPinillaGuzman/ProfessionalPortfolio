@@ -1,46 +1,30 @@
-# Astro Starter Kit: Basics
+# Portafolio Profesional · Juan Pablo Pinilla Guzman
 
-```sh
-npm create astro@latest -- --template basics
-```
+Portafolio bilingüe (ES/EN) de Juan Pablo Pinilla, desarrollador fullstack (C# / .NET, PostgreSQL, React + TypeScript).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+**Sitio:** https://juanpablopinillaguzman.github.io/ProfessionalPortfolio/
 
-## 🚀 Project Structure
+## Stack
 
-Inside of your Astro project, you'll see the following folders and files:
+- [Astro 6](https://astro.build) (sitio estático) con Content Collections
+- Tailwind CSS v4
+- [Motion](https://motion.dev) para animaciones
+- Despliegue automático a GitHub Pages con GitHub Actions (`.github/workflows/deploy-pages.yml`)
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+## Estructura
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+- `src/config/site.ts` — datos del perfil: resumen, experiencia, formación, habilidades y enlaces.
+- `src/content/projects/*.md` — un archivo por proyecto (el nombre del archivo es el ancla en `/projects#<id>`).
+- `src/pages/` — rutas: inicio, sobre mí, proyectos y contacto.
+- `public/cv/` — hoja de vida en PDF enlazada desde el sitio.
 
-## 🧞 Commands
+Más detalle en [`src/ARCHITECTURE.md`](src/ARCHITECTURE.md).
 
-All commands are run from the root of the project, from a terminal:
+## Comandos
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+| Comando           | Acción                                        |
+| :---------------- | :-------------------------------------------- |
+| `npm install`     | Instala dependencias                          |
+| `npm run dev`     | Servidor local en `localhost:4321/ProfessionalPortfolio` |
+| `npm run build`   | Genera el sitio en `./dist/`                  |
+| `npm run preview` | Previsualiza el build                         |
